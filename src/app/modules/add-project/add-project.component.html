@@ -1,0 +1,86 @@
+<mat-horizontal-stepper linear #stepper>
+
+  <mat-step  [completed]="stepone">
+    
+    <ng-template matStepLabel>Choose the project area</ng-template>
+    <agm-map [latitude]="center.lat" [longitude]="center.lng" (mapReady)="onMapReady($event)" >
+    </agm-map>    
+  </mat-step>
+  
+  <mat-step [completed]="true">
+    <form [formGroup]="projectFormGroup">
+      <div class="form-row">
+      <ng-template matStepLabel>Land Details</ng-template>
+      <div class="form-group col-md-6">
+      <mat-form-field>
+        <mat-label>Project Name</mat-label>
+        <input matInput formControlName="projectName"  placeholder="" required>
+      </mat-form-field>
+      </div>
+      <div class="form-group col-md-6">
+      <mat-form-field>
+        <mat-label>Tilt</mat-label>
+        <input matInput formControlName="tilt"  placeholder="" required>
+      </mat-form-field>
+      </div>
+      
+      </div>
+      <div class="form-row">
+      <div class="form-group col-md-6">
+      <mat-form-field>
+        <mat-label>Azimuth</mat-label>
+        <input matInput formControlName="azimuth"  placeholder="" required>
+      </mat-form-field>
+      </div>
+      <div class="form-group col-md-6">
+      <mat-form-field>
+        <mat-label>Install date</mat-label>
+        <input type="date" matInput  formControlName="install_date" placeholder="" required>
+      </mat-form-field>
+      </div>
+      </div>
+      <div>
+        <button mat-button matStepperPrevious >Back</button>
+        <button mat-button matStepperNext [disabled]='second()'>Next</button>
+      </div>
+      
+    </form>
+  </mat-step>
+
+  <mat-step>
+    <form [formGroup]="projectFormGroup" >
+      <div class="form-row">
+      <ng-template matStepLabel>Panel Details</ng-template>
+      <div class="form-group col-md-6">
+      <mat-form-field>
+        <mat-label>Width</mat-label>
+        <input matInput formControlName="panelWidth"  placeholder="" required>
+      </mat-form-field>
+      </div>
+      <div class="form-group col-md-6">
+      <mat-form-field>
+        <mat-label>Height</mat-label>
+        <input matInput formControlName="panelHeight"  placeholder="" required>
+      </mat-form-field>
+      </div>
+      
+      </div>
+      <div class="form-row">
+      <div class="form-group col-md-6">
+      <mat-form-field>
+        <mat-label>Cpacity</mat-label>
+        <input matInput formControlName="panelCapacity"  placeholder="" required>
+      </mat-form-field>
+      </div>
+  
+      </div>
+      <div>
+        <button mat-button matStepperPrevious >Back</button>
+        <button type="submit" (click)="onSubmit()">Submit</button>
+      </div>
+    </form>
+
+  </mat-step>
+
+ 
+</mat-horizontal-stepper>

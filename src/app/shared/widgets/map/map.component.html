@@ -1,3 +1,31 @@
-<agm-map [latitude]="center.lat" [longitude]="center.lng" (mapReady)="onMapReady($event)" >
+<agm-map *ngIf="center && area" [latitude]="center.lat" [longitude]="center.lng" [zoom]="zoom" [disableDefaultUI]="false"
+[zoomControl]="false" (mapReady)="onMapReady($event)" >
+    <agm-polygon [paths]= 'area' [strokeColor]='strokeColor' [visible]='visible' ></agm-polygon>
 </agm-map>
-<h1>{{numero}}</h1>
+
+<agm-map class="defaultMap" *ngIf="!center && !area" [latitude]="20" [longitude]="0" [zoom]="2"[disableDefaultUI]="true"
+[zoomControl]="true" [mapTypeId]="map_type" [minZoom]="defaultzoom" [disableDefaultUI]="true"
+[clickableIcons]="false" (mapReady)="onMapReady($event)" >
+<agm-marker-cluster imagePath="https://raw.githubusercontent.com/googlemaps/v3-utility-library/master/markerclustererplus/images/m">
+<agm-marker 
+
+            *ngFor="let m of markers; let i = index"
+            [latitude]="m.lat"
+            [longitude]="m.lng"
+            [label]="m.label"
+            [markerDraggable]="m.draggable"
+            >
+            
+          <agm-info-window>
+              <strong>{{m.name}}</strong>
+              <br>
+            <strong>Number of panels :</strong> {{m.numberOfPanels}}<br>
+            <strong>Surface :</strong> {{m.surface}}<br>
+
+            <button mat-button [routerLink]="['/project', m.id]" skipLocationChange > Details..</button>
+          </agm-info-window>
+          
+        </agm-marker>
+</agm-marker-cluster>
+</agm-map>
+

@@ -1,4 +1,3 @@
-import { SolarfarmService } from './../services/solarfarm.service';
 import { MatButtonModule } from '@angular/material/button';
 import { FooterComponent } from './components/footer/footer.component';
 import { SidebarComponent } from './components/sidebar/sidebar.component';
@@ -17,8 +16,9 @@ import { AgmCoreModule, GoogleMapsAPIWrapper } from '@agm/core';
 import { HttpClientModule } from '@angular/common/http';
 import { SplineComponent } from './widgets/spline/spline.component';
 import { HighchartsChartModule } from 'highcharts-angular';
-
-
+import {MatTreeModule} from '@angular/material/tree';
+import { GaugeComponent } from './widgets/gauge/gauge.component';
+import { AgmJsMarkerClustererModule } from '@agm/js-marker-clusterer';
 
 
 
@@ -29,7 +29,8 @@ import { HighchartsChartModule } from 'highcharts-angular';
     SidebarComponent,
     FooterComponent,
     MapComponent,
-    SplineComponent
+    SplineComponent,
+    GaugeComponent
   ],
   imports: [
     CommonModule,
@@ -46,17 +47,19 @@ import { HighchartsChartModule } from 'highcharts-angular';
       libraries: ['drawing']
     }),
     HttpClientModule,
-    HighchartsChartModule
+    HighchartsChartModule,
+    MatTreeModule,
+    AgmJsMarkerClustererModule
   ],
   providers: [
-    SolarfarmService
   ],
   exports: [
     HeaderComponent,
     FooterComponent,
     SidebarComponent,
     MapComponent,
-    SplineComponent
+    SplineComponent,
+    GaugeComponent
   ]
 })
 export class SharedModule { }

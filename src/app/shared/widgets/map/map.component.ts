@@ -1,6 +1,7 @@
-import { SolarfarmService } from './../../../services/solarfarm.service';
-import { Component, OnInit } from '@angular/core';
+import { environment } from './../../../../environments/environment';
+import { Component, OnInit,Input } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { SharedService } from 'src/app/services/shared.service';
 
 declare const google: any;
 
@@ -10,50 +11,34 @@ declare const google: any;
   styleUrls: ['./map.component.scss']
 })
 export class MapComponent implements OnInit {
-  constructor(private http: HttpClient, private service: SolarfarmService) {
+
+  @Input('area') area ?:any;
+  @Input('center') center ?:any;
+  @Input('markers') markers ?:any;
+
+
+  constructor(private http: HttpClient) {
    }
-  numero: any[];
-
-
-  center: any = {
-    lat: 33.5362475,
-    lng: -111.9267386
-  };
+   
+    strokeColor='black';
+    visible=true;
+    zoom = 16;
+    defaultzoom=2;
+    defaultcenter = {lat: 0,long: 0};
+   marker_icon = environment.marker_icon;
+    map_type = "terrain";
 
   ngOnInit(): void {
-    this.service.currentMessage.subscribe(message =>  this.numero = message['numberofpanels'] );
-  }
-
-
-
+    console.log(this.area);
+    console.log(this.markers);
+   
+}
   onMapReady(map) {
-    this.initDrawingManager(map);
   }
 
-  initDrawingManager(map: any) {
-    const options = {
-      drawingControl: true,
-      drawingControlOptions: {
-        drawingModes: ['polygon']
-      },
-      polygonOptions: {
-        draggable: true,
-      },
-      drawingMode: google.maps.drawing.OverlayType.POLYGON
-    };
-    const that = this;
-    const drawingManager = new google.maps.drawing.DrawingManager(options);
-    drawingManager.setMap(map);
-    const points = [];
-    drawingManager.addListener('polygoncomplete', (polygon) => {
-      polygon.getPath().forEach((xy, i) =>   {
+ 
+      //const res = that.http.post('http://127.0.0.1:1235/pv/getpower', {points: points});
+      //res.subscribe((data) => { that.numero = data['numberofpanels']; /*that.service.changeMessage(that.numero); */ });
 
-        points.push({ lat: xy.lat(), lon: xy.lng()});
-        console.log(points);
-      });
-      const res = that.http.post('http://127.0.0.1:1235/pv/getpower', {points: points});
-      res.subscribe((data) => { that.numero = data['numberofpanels']; that.service.changeMessage(data);  });
-
-    })}
 
 }

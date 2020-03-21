@@ -1,12 +1,13 @@
-import { SolarfarmService } from './services/solarfarm.service';
 import { SharedModule } from './shared/shared.module';
 import { DefaultModule } from './layouts/default/default.module';
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
-
+import { NgModule,CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { SharedService } from './services/shared.service';
+import { ProjectService } from './services/project.service';
+
 
 
 
@@ -20,10 +21,14 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     AppRoutingModule,
     BrowserAnimationsModule,
     DefaultModule,
-    SharedModule
+    SharedModule,
   ],
   providers: [
-    SolarfarmService
+    SharedService,
+    ProjectService,
+  ],
+  schemas: [
+    CUSTOM_ELEMENTS_SCHEMA
   ],
   bootstrap: [AppComponent]
 })

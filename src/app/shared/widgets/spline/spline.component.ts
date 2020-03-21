@@ -1,7 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit,Input } from '@angular/core';
 import * as Highcharts from 'highcharts';
 import HC_exporting from 'highcharts/modules/exporting';
-import { SolarfarmService } from 'src/app/services/solarfarm.service';
+import { tokenName } from '@angular/compiler';
 
 @Component({
   selector: 'app-widget-spline',
@@ -10,57 +10,63 @@ import { SolarfarmService } from 'src/app/services/solarfarm.service';
 })
 export class SplineComponent implements OnInit {
 
+  @Input('data') data:any;
+  @Input('time') time:any;
+
   Highcharts = Highcharts;
   chartOptions: {};
-  public chart = [];
 
 
-  constructor(private service: SolarfarmService) { }
+  constructor() { }
 
   ngOnInit(): void {
-    this.service.currentMessage.subscribe(message => {if(message.estimations) this.chart = message.estimations });
+   // this.service.currentMessage.subscribe(message => {if(message.estimations) this.chart = message.estimations });
 
     this.chartOptions = {
       chart: {
-        type: 'spline'
+          type: 'spline'
       },
       title: {
-        text: 'Random DATA'
+          text: 'Monthly Average Temperature'
       },
       subtitle: {
-        text: 'Demo'
-      },
-      tooltip: {
-        split: true,
-        valueSuffix: ' millions'
-      },
-      credits: {
-        enabled: false
+          text: 'Source: WorldClimate.com'
       },
       xAxis: {
-        type: 'datetime',
-        tickPixelInterval: 50000,
-        dateTimeLabelFormats: {
-
-            millisecond: '%H:%M:%S.%L',
-            second: '%H:%M:%S',
-            minute: '%H:%M',
-            hour: '%H:%M',
-            day: '%e. %b',
-            week: '%e. %b',
-            month: '%b \'%y',
-            year: '%Y'
-        }
-        },
-
-      exporting: {
-        enabled: true,
+          categories: this.time
+      },
+      yAxis: {
+          title: {
+              text: 'PV power'
+          },
+          labels: {
+              formatter: function () {
+                  return this.value + 'Kw';
+              }
+          }
+      },
+      tooltip: {
+          crosshairs: true,
+          shared: true
+      },
+      plotOptions: {
+          spline: {
+              marker: {
+                  radius: 4,
+                  lineColor: '#666666',
+                  lineWidth: 1
+              }
+          }
       },
       series: [{
-        data: this.chart,
-        type: 'line'
+          name: 'Tokyo',
+          marker: {
+              symbol: 'square'
+          },
+          data: this.data
+  
       }]
-    };
+  }
     HC_exporting(Highcharts);
 
   }

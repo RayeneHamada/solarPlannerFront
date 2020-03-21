@@ -3,7 +3,8 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  marker_icon: "https://image.flaticon.com/icons/png/128/2427/2427035.png"
 };
 
 /*

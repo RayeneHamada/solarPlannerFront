@@ -1,0 +1,23 @@
+
+<table class="table">
+    <thead>
+        <th scope="col">Name</th>
+        <th scope="col">Location</th>
+        <th scope="col">Number of panels</th>
+        <th scope="col">Surface</th>
+        <th scope="col">Action</th>
+    </thead>
+    <tbody>
+      <tr  *ngFor="let p of projects" >
+        <th scope="row" [routerLink]="['/project', p._id]" skipLocationChange >{{p.name|uppercase}}</th>
+        <td>{{p.lat}}/{{p.lon}}</td>
+        <td>{{p.panel_number}}</td>
+        <td>{{p.surface}} m²</td>
+        <td><button mat-button (click)='deleteProject(p)'>Delete <i class="material-icons">
+          delete
+          </i></button></td>
+      </tr>
+    </tbody>
+  </table>
+
+<mat-paginator [pageSizeOptions]="[5, 10, 20]"></mat-paginator>

@@ -1,8 +1,7 @@
-import { SolarfarmService } from './../../services/solarfarm.service';
 import { Component, OnInit } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import * as Highcharts from 'highcharts';
-import HC_exporting from 'highcharts/modules/exporting';
+import { ProjectService } from 'src/app/services/project.service';
+import { NgxSpinnerService } from "ngx-spinner";
+import {MatSnackBar} from '@angular/material/snack-bar';
 
 declare const google: any;
 
@@ -13,13 +12,45 @@ declare const google: any;
 })
 export class DashboardComponent implements OnInit {
 
-  public numero;
-  public chart;
-  constructor(private service: SolarfarmService) {
+  projects = [];
+  markers = [];
+  loaded = false;
+  constructor(private service: ProjectService,private spinner: NgxSpinnerService,private _snackBar: MatSnackBar) {
   }
 
 
   ngOnInit(): void {
-    this.service.currentMessage.subscribe(message => this.numero = message.numberofpanels);
+    this.spinner.show();
+ 
+    setTimeout(() => {
+      /** spinner ends after 5 seconds */
+      this.spinner.hide();
+    }, 3000);
+    setTimeout(() => {
+      this._snackBar.open("Welcome to dashboard","false",{
+        duration: 2000,
+      });
+  
+    }, 5000);
+    
+    this.service.getDashboard().subscribe(
+      p=>{p.forEach(p => {
+        this.markers.push(
+          {
+            lat: p.lat,
+            lng: p.lon,
+            label: p.name,
+            id: p._id,
+            numberOfPanels:p.panel_number,
+            surface:p.surface,
+            draggable:false
+          }
+        )
+      });
+        }
+      ,err=>{console.log(err)}
+    );
   }
 }
+
+
