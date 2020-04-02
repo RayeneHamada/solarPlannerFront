@@ -14,24 +14,31 @@ export class DashboardComponent implements OnInit {
 
   projects = [];
   markers = [];
+  nb_visits
   loaded = false;
   constructor(private service: ProjectService,private spinner: NgxSpinnerService,private _snackBar: MatSnackBar) {
   }
 
 
   ngOnInit(): void {
+    if(!sessionStorage.getItem('nb_visits'))
+    {
+      
+      sessionStorage.setItem('nb_visits','1');
+      setTimeout(() => {
+        this._snackBar.open("Welcome to dashboard","close",{
+          duration: 2000,
+        });
+    
+      }, 5000);
+    }
     this.spinner.show();
  
     setTimeout(() => {
       /** spinner ends after 5 seconds */
       this.spinner.hide();
     }, 3000);
-    setTimeout(() => {
-      this._snackBar.open("Welcome to dashboard","false",{
-        duration: 2000,
-      });
-  
-    }, 5000);
+   
     
     this.service.getDashboard().subscribe(
       p=>{p.forEach(p => {
@@ -48,7 +55,7 @@ export class DashboardComponent implements OnInit {
         )
       });
         }
-      ,err=>{console.log(err)}
+      ,err=>{console.log("front err"+err)}
     );
   }
 }

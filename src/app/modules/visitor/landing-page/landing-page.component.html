@@ -1,0 +1,129 @@
+<section class="ss_index_one" style="background-color: white;"> <!--===== Section One Start =====-->
+	<div class="container-fluid">
+		<div class="ss_header"> <!--===== Top Menu =====-->
+			<div class="row">
+				<div class="col-lg-3 col-md-7 col-sm-12 col-12 align-self-center">
+					<div class="ss_logo">
+						<a href=""><img class="img-fluid" src="assets/images/svg/white_logo.svg" alt="logo" /></a>
+					</div>
+				</div>
+				<div class="col-lg-9 col-md-5 col-sm-12 col-12 align-self-center">
+					<div class="ss_menu">
+
+						<div class="head_icon">
+							
+
+							<div class="ss_menu_bar">
+								<span></span>
+								<span></span>
+								<span></span>
+							</div>
+							<a *ngIf="isAuth" routerLink="/login" class="white_btn">Login</a>
+							<a *ngIf="!isAuth" routerLink="/projects" class="white_btn">Dashboard</a>
+
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="ss_banner_main"> <!--===== Banner =====-->
+			<div class="row">
+				<div class="col-lg-5">
+					<div class="ss_banner_left">
+						<h2>Solar services</h2>
+						<h1>Professional Solar<span> Panel Planner</span></h1>
+						<a href="#" class="white_btn">Get Started</a>
+					</div>
+				</div>
+				<div class="col-lg-7">
+					<div class="ss_banner_right">
+						<img class="img-fluid ss_cloud_one" src="assets/images/banner1_img.png" alt="image"/>
+						<img class="img-fluid ss_cloud" src="assets/images/cloud.png" alt="image"/>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</section> <!--===== Section One End =====-->
+
+<section class="ss_section_two spacer_top" > <!--===== Section Two Start =====-->
+	<div class="container-fluid">
+		<div class="ss_two"> 
+			<div class="row">
+				<div class="col-lg-4 col-md-6 col-sm-6">
+					<div class="ss_two_sec wow fadeIn" data-wow-delay="0.1s">
+						<img class="img-fluid" src="assets/images/svg/icon1.svg" alt="image"/>
+						<h2>Solar Plates</h2>
+						<p>Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit</p>
+					</div>
+				</div>
+				<div class="col-lg-4 col-md-6 col-sm-6">
+					<div class="ss_two_sec wow fadeIn" data-wow-delay="0.2s">
+						<img class="img-fluid" src="assets/images/svg/icon2.svg" alt="image"/>
+						<h2>Solar Water Heater</h2>
+						<p>Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit</p>
+					</div>
+				</div>
+				<div class="col-lg-4 col-md-6 col-sm-6">
+					<div class="ss_two_sec wow fadeIn" data-wow-delay="0.3s">
+						<img class="img-fluid" src="assets/images/svg/icon3.svg" alt="image"/>
+						<h2>PV Solar Panel</h2>
+						<p>Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit</p>
+					</div>
+				</div>
+				
+			</div>
+		</div>
+	</div>
+</section> <!--===== Section Two End =====-->
+
+<section class="ss_section_three spacer_bottom" style="background-color: #fcfcfc;"> <!--===== Section Three Start =====-->
+	<div class="container-fluid"> 
+		<div class="row">
+			<div class="col-lg-6">
+				<div class="ss_three_left wow fadeIn">
+					<agm-map [zoom]="4" [latitude]="center.lat" [longitude]="center.lng" (mapReady)="onMapReady($event)" >
+					</agm-map>   
+				</div>
+			</div>
+			<div class="col-lg-6 align-self-center">
+				<div class="ss_three_right wow fadeIn">
+					<h3>Trial service</h3>
+					<h1>We provide project planning</h1>
+					<p>try to draw the area where you want to implement your solar farm on the map so we can provide you with the optimal configuration to your project</p>
+					<div class="row">
+						<div class="col-lg-6 col-md-6 col-sm-6">
+							<div class="ss_two_sec wow fadeIn" data-wow-delay="0.1s">
+								<img class="img-fluid" src="assets/images/svg/icon1.svg" alt="image"/>
+								<h2>Number of panels</h2>
+								<p>{{numpan}}</p>
+							</div>
+						</div>
+						<div class="col-lg-6 col-md-6 col-sm-6">
+							<div class="ss_two_sec wow fadeIn" data-wow-delay="0.2s">
+								<img class="img-fluid" src="assets/images/svg/compass.svg" alt="image"/>
+								<h2>Direction</h2>
+								<p>{{dir}}</p>
+							</div>
+						</div>
+						
+						
+					</div>
+					<a *ngIf="isAuth" routerLink="/registration" class="ss_btn">Know More</a>
+				</div>
+			</div>
+		</div>
+		<div class="ss_shape_one">
+			<div class="ss_shape"></div>
+		</div>
+		<div class="ss_shape_dot"></div>
+	</div>
+</section> <!--===== Section Three End =====-->
+
+
+
+
+ <!--===== Section Footer End =====-->
+<div class="ss_copywrite">
+	<p>© All rights reserved 2020</p>
+</div>

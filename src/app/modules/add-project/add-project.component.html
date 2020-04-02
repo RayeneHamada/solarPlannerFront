@@ -7,7 +7,7 @@
     </agm-map>    
   </mat-step>
   
-  <mat-step [completed]="true">
+  <mat-step [stepControl]="projectFormGroup">
     <form [formGroup]="projectFormGroup">
       <div class="form-row">
       <ng-template matStepLabel>Land Details</ng-template>
@@ -19,7 +19,7 @@
       </div>
       <div class="form-group col-md-6">
       <mat-form-field>
-        <mat-label>Tilt</mat-label>
+        <mat-label>Tilt (DEG°)</mat-label>
         <input matInput formControlName="tilt"  placeholder="" required>
       </mat-form-field>
       </div>
@@ -28,7 +28,7 @@
       <div class="form-row">
       <div class="form-group col-md-6">
       <mat-form-field>
-        <mat-label>Azimuth</mat-label>
+        <mat-label>Azimuth (DEG°)</mat-label>
         <input matInput formControlName="azimuth"  placeholder="" required>
       </mat-form-field>
       </div>
@@ -41,25 +41,25 @@
       </div>
       <div>
         <button mat-button matStepperPrevious >Back</button>
-        <button mat-button matStepperNext [disabled]='second()'>Next</button>
+        <button mat-button matStepperNext [disabled]='third()'>Next</button>
       </div>
       
     </form>
   </mat-step>
 
-  <mat-step>
-    <form [formGroup]="projectFormGroup" >
+  <mat-step [stepControl]="panelFormGroup">
+    <form [formGroup]="panelFormGroup" >
       <div class="form-row">
       <ng-template matStepLabel>Panel Details</ng-template>
       <div class="form-group col-md-6">
       <mat-form-field>
-        <mat-label>Width</mat-label>
+        <mat-label>Width (cm)</mat-label>
         <input matInput formControlName="panelWidth"  placeholder="" required>
       </mat-form-field>
       </div>
       <div class="form-group col-md-6">
       <mat-form-field>
-        <mat-label>Height</mat-label>
+        <mat-label>Height (cm)</mat-label>
         <input matInput formControlName="panelHeight"  placeholder="" required>
       </mat-form-field>
       </div>
@@ -68,7 +68,7 @@
       <div class="form-row">
       <div class="form-group col-md-6">
       <mat-form-field>
-        <mat-label>Cpacity</mat-label>
+        <mat-label>Cpacity (kW)</mat-label>
         <input matInput formControlName="panelCapacity"  placeholder="" required>
       </mat-form-field>
       </div>
@@ -76,7 +76,7 @@
       </div>
       <div>
         <button mat-button matStepperPrevious >Back</button>
-        <button type="submit" (click)="onSubmit()">Submit</button>
+        <button mat-button type="submit" (click)="onSubmit()" [disabled]="third()">Submit</button>
       </div>
     </form>
 

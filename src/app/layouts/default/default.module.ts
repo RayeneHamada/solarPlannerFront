@@ -25,7 +25,6 @@ import { NgxSpinnerModule } from "ngx-spinner";
 import { MatIconModule } from '@angular/material/icon';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
 
-
 @NgModule({
   declarations: [
     DefaultComponent,
@@ -58,7 +57,7 @@ import {MatSnackBarModule} from '@angular/material/snack-bar';
     MatButtonModule,
     NgxSpinnerModule,
     MatIconModule,
-    MatSnackBarModule
+    MatSnackBarModule,
     
 
   ]

@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient,HttpHeaders } from '@angular/common/http';
 
 
 @Injectable({
@@ -12,27 +12,68 @@ export class ProjectService {
   }
   subscribeProject(projet: any)
   {
-    return this.http.post('http://127.0.0.1:1235/project/new',projet);  
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer ' + localStorage.getItem("token")
+      })
+
+    };
+    return this.http.post('http://127.0.0.1:1235/project/new',projet,httpOptions);  
+
+  }
+  testProject(projet: any)
+  {
+   
+    return this.http.post('http://127.0.0.1:1235/project/test',projet);  
 
   }
 
   getAllProject()
   {
-       return this.http.get<any>('http://127.0.0.1:1235/project/');
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer ' + localStorage.getItem("token")
+      })
+
+    };
+       return this.http.get<any>('http://127.0.0.1:1235/project/',httpOptions);
   }
 
   deleteProject(id)
   {
-       return  this.http.delete<any>('http://127.0.0.1:1235/project/delete/'+id);
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer ' + localStorage.getItem("token")
+      })
+
+    };
+       return  this.http.delete<any>('http://127.0.0.1:1235/project/delete/'+id,httpOptions);
       
   }
   getprojectDetails(id)
   {
-    return  this.http.get<any>('http://127.0.0.1:1235/project/details/'+id);
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer ' + localStorage.getItem("token")
+      })
+
+    };
+    return  this.http.get<any>('http://127.0.0.1:1235/project/details/'+id,httpOptions);
   }
   getDashboard()
   {
-       return this.http.get<any>('http://127.0.0.1:1235/project/dashboard');
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer ' + localStorage.getItem("token")
+      })
+
+    };
+       return this.http.get<any>('http://127.0.0.1:1235/project/dashboard',httpOptions);
   }
 
 }

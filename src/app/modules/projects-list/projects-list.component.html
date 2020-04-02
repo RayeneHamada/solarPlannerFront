@@ -9,7 +9,7 @@
     </thead>
     <tbody>
       <tr  *ngFor="let p of projects" >
-        <th scope="row" [routerLink]="['/project', p._id]" skipLocationChange >{{p.name|uppercase}}</th>
+        <th scope="row" [routerLink]="['/projects', p._id]"  >{{p.name|uppercase}}</th>
         <td>{{p.lat}}/{{p.lon}}</td>
         <td>{{p.panel_number}}</td>
         <td>{{p.surface}} m²</td>

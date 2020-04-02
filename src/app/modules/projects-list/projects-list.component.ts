@@ -35,8 +35,8 @@ export class ProjectsListComponent implements OnInit {
     let index = this.projects.indexOf(project);
     this.service.deleteProject(project._id).subscribe((res)=>{
       this.projects.splice(index,1);
-      this._snackBar.open(project.name+"deleted successfuly","close",{
-        duration: 2000,
+      this._snackBar.open(project.name+" has been deleted successfuly","close",{
+        duration: 5000,
       });
   },(err)=>{
     console.log(err);

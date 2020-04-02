@@ -33,7 +33,6 @@ export class ViewProjectComponent implements OnInit {
     });
     this.service.getprojectDetails(this.id).subscribe(
       p=>{
-          console.log(p);
           this.estimations=p.estimation;
           this.project = p.project;
           this.panelNumber = this.project.panel_number;
