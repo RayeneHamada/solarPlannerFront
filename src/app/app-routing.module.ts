@@ -1,15 +1,24 @@
+import { ForgotPasswordComponent } from './modules/visitor/forgot-password/forgot-password.component';
 import { LandingPageComponent } from './modules/visitor/landing-page/landing-page.component';
-import { ProjectsListComponent } from './modules/projects-list/projects-list.component';
-import { AddProjectComponent } from './modules/add-project/add-project.component';
-import { DashboardComponent } from './modules/dashboard/dashboard.component';
+import { AddProjectComponent } from './modules/user/add-project/add-project.component';
+import { DashboardComponent } from './modules/user/dashboard/dashboard.component';
 import { NgModule, Component } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { DefaultComponent } from './layouts/default/default.component';
-import { ViewProjectComponent } from './modules/view-project/view-project.component';
+import { DefaultComponent } from './layouts/user/default.component';
+import { ViewProjectComponent } from './modules/user/view-project/view-project.component';
 import { VisitorComponent } from './layouts/visitor/visitor.component';
 import { RegisterComponent } from './modules/visitor/register/register.component';
 import { LoginComponent } from './modules/visitor/login/login.component';
 import { AuthGuardGuard } from './guards/auth-guard.guard';
+import { AdminComponent } from './layouts/admin/admin.component';
+import { AdminGuard } from './guards/admin/admin.guard';
+import { ProjectsListComponent } from './modules/admin/projects-list/projects-list.component';
+import { UserProjectsComponent } from './modules/user/user-projects/user-projects.component';
+import { UsersListComponent } from './modules/admin/users-list/users-list.component';
+import { AdminDashboardComponent } from './modules/admin/admin-dashboard/admin-dashboard.component';
+import { NotFoundComponent } from './modules/errors/not-found/not-found.component';
+import { ResetPasswordComponent } from './modules/visitor/reset-password/reset-password.component';
+
 
 
 const routes: Routes = [
@@ -27,7 +36,7 @@ const routes: Routes = [
     },
     {
       path:'all',
-      component: ProjectsListComponent
+      component: UserProjectsComponent
     },
     {
       path:':id',
@@ -51,8 +60,39 @@ const routes: Routes = [
       {
         path:'',  
         component: LandingPageComponent
+      },
+      {
+        path:'forgot_software',  
+        component: ForgotPasswordComponent
+      },
+      {
+        path:'reset_password/:id/:token',  
+        component: ResetPasswordComponent
       }
   ]
+  },
+  {
+    path:'admin',
+    component: AdminComponent,
+    canActivate:[AdminGuard],
+    children:[
+      {
+        path:'',
+        component: AdminDashboardComponent
+      },
+      {
+        path:'projects',
+        component: ProjectsListComponent
+      },
+      {
+        path:'users',
+        component: UsersListComponent
+      }
+    ]
+  },
+  {
+    path:'**',
+    component:NotFoundComponent,
   }
 ];
 

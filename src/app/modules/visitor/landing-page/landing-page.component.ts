@@ -1,5 +1,5 @@
-import { ProjectService } from './../../../services/project.service';
-import { AuthService } from './../../../services/auth.service';
+import { ProjectService } from '../../../services/project/project.service';
+import { AuthService } from './../../../services/auth/auth.service';
 import { Component, OnInit } from '@angular/core';
 
 declare const google: any;
@@ -11,6 +11,8 @@ declare const google: any;
 export class LandingPageComponent implements OnInit {
 
   isAuth:boolean;
+  isUser:boolean;
+  isAdmin:boolean;
   numpan = 0;
   dir = 'South';
   area: any[];
@@ -23,6 +25,8 @@ export class LandingPageComponent implements OnInit {
   ngOnInit(
   ): void {
     this.isAuth = this.service.isloggedin();
+    this.isUser = this.service.isLoggedUser();
+    this.isAdmin = this.service.isAdmin();
   }
 
   onMapReady(map) {

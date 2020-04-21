@@ -8,6 +8,9 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { LoginComponent } from '../../modules/visitor/login/login.component';
 import { MatIconModule } from '@angular/material/icon';
 import { AgmCoreModule, GoogleMapsAPIWrapper } from '@agm/core';
+import { NotFoundComponent } from 'src/app/modules/errors/not-found/not-found.component';
+import { ForgotPasswordComponent } from 'src/app/modules/visitor/forgot-password/forgot-password.component';
+import { ResetPasswordComponent } from 'src/app/modules/visitor/reset-password/reset-password.component';
 
 
 
@@ -18,7 +21,10 @@ import { AgmCoreModule, GoogleMapsAPIWrapper } from '@agm/core';
     VisitorComponent,
     RegisterComponent,
     LoginComponent,
-    LandingPageComponent
+    LandingPageComponent,
+    NotFoundComponent,
+    ForgotPasswordComponent,
+    ResetPasswordComponent
   ],
   imports: [
     CommonModule,

@@ -1,0 +1,22 @@
+
+<table class="table" class="mat-elevation-z8">
+    <thead>
+        <th scope="col">Name</th>
+        <th scope="col">E-mail</th>
+        <th scope='col'>Number of projects</th>
+
+        <th scope="col">Action</th>
+    </thead>
+    <tbody>
+      <tr  *ngFor="let u of users" >
+        <th scope="row"  >{{u.details.fullName|uppercase}}</th>
+        <td>{{u.details.email}}</td>
+        <td>{{u.projects}}</td>
+ 
+
+        <td><button mat-button (click)='deleteUser(u)'>Delete <i class="material-icons">
+          delete
+          </i></button></td>
+      </tr>
+    </tbody>
+  </table>

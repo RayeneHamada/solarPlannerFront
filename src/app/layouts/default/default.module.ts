@@ -1,11 +1,10 @@
-import { ProjectsListComponent } from './../../modules/projects-list/projects-list.component';
-import { AddProjectComponent } from './../../modules/add-project/add-project.component';
+import { AddProjectComponent } from '../../modules/user/add-project/add-project.component';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import {MatStepperModule} from '@angular/material/stepper'
-import { SharedModule } from './../../shared/shared.module';
+import { SharedModule } from '../../shared/shared.module';
 import { RouterModule } from '@angular/router';
-import { DashboardComponent } from './../../modules/dashboard/dashboard.component';
+import { DashboardComponent } from '../../modules/user/dashboard/dashboard.component';
 import { DefaultComponent } from './default.component';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
@@ -20,18 +19,24 @@ import {MatInputModule} from '@angular/material/input';
 import {MatTableModule} from '@angular/material/table';
 import {MatPaginatorModule} from '@angular/material/paginator';
 import {MatButtonModule} from '@angular/material/button';
-import { ViewProjectComponent } from 'src/app/modules/view-project/view-project.component';
+import { ViewProjectComponent } from 'src/app/modules/user/view-project/view-project.component';
 import { NgxSpinnerModule } from "ngx-spinner";
 import { MatIconModule } from '@angular/material/icon';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
+import {MatTabsModule} from '@angular/material/tabs';
+import { HttpModule } from '@angular/http';
+import { PdfViewerModule } from 'ng2-pdf-viewer';
+import { BrowserModule } from '@angular/platform-browser';
+import {DragDropModule} from '@angular/cdk/drag-drop';
+import { UserProjectsComponent } from 'src/app/modules/user/user-projects/user-projects.component';
 
 @NgModule({
   declarations: [
     DefaultComponent,
     DashboardComponent,
     AddProjectComponent,
-    ProjectsListComponent,
-    ViewProjectComponent
+    ViewProjectComponent,
+    UserProjectsComponent
 
   ],
   imports: [
@@ -54,10 +59,14 @@ import {MatSnackBarModule} from '@angular/material/snack-bar';
     MatInputModule,
     MatTableModule,
     MatPaginatorModule,
-    MatButtonModule,
+    DragDropModule,
     NgxSpinnerModule,
     MatIconModule,
     MatSnackBarModule,
+    MatTabsModule,
+    HttpModule,
+    BrowserModule, 
+    PdfViewerModule
     
 
   ]

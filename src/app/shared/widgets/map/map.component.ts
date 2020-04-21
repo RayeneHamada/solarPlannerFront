@@ -29,8 +29,6 @@ export class MapComponent implements OnInit {
     map_type = "terrain";
 
   ngOnInit(): void {
-    console.log(this.area);
-    console.log(this.markers);
    
 }
   onMapReady(map) {

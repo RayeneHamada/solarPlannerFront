@@ -1,0 +1,27 @@
+
+<table class="table" class="mat-elevation-z8">
+    <thead>
+        <th scope="col">Name</th>
+        <th scope="col">Location</th>
+        <th scope='col'>Owner</th>
+        <th scope="col">Number of panels</th>
+        <th scope="col">Surface</th>
+        <th scope="col">Production</th>
+
+        <th scope="col">Action</th>
+    </thead>
+    <tbody>
+      <tr  *ngFor="let p of projects" >
+        <th scope="row"  >{{p.name|uppercase}}</th>
+        <td>{{p.country}}</td>
+        <td>{{p.owner.fullName}}</td>
+        <td>{{p.panel_number}}</td>
+        <td>{{p.surface | number:'1.0-0'}} m²</td>
+        <td>{{p.total_prod | number:'1.0-0'}} Kw</td>
+
+        <td><button mat-button (click)='deleteProject(p)'>Delete <i class="material-icons">
+          delete
+          </i></button></td>
+      </tr>
+    </tbody>
+  </table>

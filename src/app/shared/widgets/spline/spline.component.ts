@@ -1,7 +1,6 @@
 import { Component, OnInit,Input } from '@angular/core';
 import * as Highcharts from 'highcharts';
 import HC_exporting from 'highcharts/modules/exporting';
-import { tokenName } from '@angular/compiler';
 
 @Component({
   selector: 'app-widget-spline',
@@ -20,7 +19,6 @@ export class SplineComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
-   // this.service.currentMessage.subscribe(message => {if(message.estimations) this.chart = message.estimations });
 
     this.chartOptions = {
       chart: {

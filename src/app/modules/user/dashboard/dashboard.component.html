@@ -1,0 +1,2 @@
+<app-widget-map *ngIf="markers[0]; else loggedOut"  [markers]="markers"></app-widget-map>
+<ng-template #loggedOut><button mat-button>Create your first project</button></ng-template>

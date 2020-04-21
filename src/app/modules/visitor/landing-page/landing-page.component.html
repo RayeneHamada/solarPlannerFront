@@ -18,8 +18,10 @@
 								<span></span>
 								<span></span>
 							</div>
-							<a *ngIf="isAuth" routerLink="/login" class="white_btn">Login</a>
-							<a *ngIf="!isAuth" routerLink="/projects" class="white_btn">Dashboard</a>
+							<a *ngIf="!isAuth" routerLink="/login" class="white_btn">Login</a>
+							<a *ngIf="isAuth && isUser" routerLink="/projects" class="white_btn">Dashboard</a>
+							<a *ngIf="isAuth && isUser" routerLink="/projects" class="white_btn">Dashboard</a>
+							<a *ngIf="isAuth && isAdmin" routerLink="/admin" class="white_btn">Dashboard</a>
 
 						</div>
 					</div>

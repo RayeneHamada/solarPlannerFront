@@ -11,11 +11,15 @@
   <mat-divider></mat-divider>
 
   <h2 matSubheader>Pages</h2>
-  <a mat-list-item routerLinkActive="list-item-active" routerLink=""><mat-icon>home</mat-icon>Home</a>
-  <a mat-list-item routerLinkActive="list-item-active" routerLink="/projects"><mat-icon>dashboard</mat-icon>Dashboard</a>
-  <a mat-list-item routerLinkActive="list-item-active" routerLink="/projects/add"><mat-icon>add_location</mat-icon>New solar farm</a>
-  <a mat-list-item routerLinkActive="list-item-active" routerLink="/projects/all"><mat-icon>wb_sunny</mat-icon>All Solar Farms</a>
-  <a mat-list-item routerLinkActive="list-item-active" routerLink="/projects"><mat-icon>house</mat-icon>Rooftops </a>
+  <a mat-list-item *ngIf="isUser" routerLinkActive="list-item-active" routerLink=""><mat-icon>home</mat-icon>Home</a>
+  <a mat-list-item *ngIf="isUser" routerLinkActive="list-item-active" routerLink="/projects"><mat-icon>dashboard</mat-icon>Dashboard</a>
+  <a mat-list-item *ngIf="isUser" routerLinkActive="list-item-active" routerLink="/projects/add"><mat-icon>add_location</mat-icon>New solar farm</a>
+  <a mat-list-item *ngIf="isUser" routerLinkActive="list-item-active" routerLink="/projects/all"><mat-icon>wb_sunny</mat-icon>All Solar Farms</a>
+  <a mat-list-item *ngIf="isUser" routerLinkActive="list-item-active" routerLink="/projects"><mat-icon>house</mat-icon>Rooftops </a>
+  <a mat-list-item *ngIf="isAdmin" routerLinkActive="list-item-active" routerLink="/"><mat-icon>home</mat-icon>Home</a>
+  <a mat-list-item *ngIf="isAdmin" routerLinkActive="list-item-active" routerLink="/admin"><mat-icon>dashboard</mat-icon>Dashboard</a>
+  <a mat-list-item *ngIf="isAdmin" routerLinkActive="list-item-active" routerLink="/admin/users"><mat-icon>supervisor_account</mat-icon>Users</a>
+  <a mat-list-item *ngIf="isAdmin" routerLinkActive="list-item-active" routerLink="/admin/projects"><mat-icon>power</mat-icon>Projects</a>
   
 
   <mat-divider></mat-divider>

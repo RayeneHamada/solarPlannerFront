@@ -17,8 +17,9 @@ import { HttpClientModule } from '@angular/common/http';
 import { SplineComponent } from './widgets/spline/spline.component';
 import { HighchartsChartModule } from 'highcharts-angular';
 import {MatTreeModule} from '@angular/material/tree';
-import { GaugeComponent } from './widgets/gauge/gauge.component';
 import { AgmJsMarkerClustererModule } from '@agm/js-marker-clusterer';
+import { ColumnComponent } from './widgets/column/column.component';
+import { MultiaxesComponent } from './widgets/multiaxes/multiaxes.component';
 
 
 
@@ -30,7 +31,8 @@ import { AgmJsMarkerClustererModule } from '@agm/js-marker-clusterer';
     FooterComponent,
     MapComponent,
     SplineComponent,
-    GaugeComponent
+    ColumnComponent,
+    MultiaxesComponent
   ],
   imports: [
     CommonModule,
@@ -59,7 +61,8 @@ import { AgmJsMarkerClustererModule } from '@agm/js-marker-clusterer';
     SidebarComponent,
     MapComponent,
     SplineComponent,
-    GaugeComponent
+    ColumnComponent,
+    MultiaxesComponent
   ]
 })
 export class SharedModule { }
