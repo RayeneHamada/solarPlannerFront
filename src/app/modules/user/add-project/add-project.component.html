@@ -6,80 +6,60 @@
     <agm-map [latitude]="center.lat" [longitude]="center.lng" (mapReady)="onMapReady($event)" >
     </agm-map>    
   </mat-step>
-  
-  <mat-step [stepControl]="projectFormGroup">
-    <form [formGroup]="projectFormGroup">
-      <div class="form-row">
-      <ng-template matStepLabel>Land Details</ng-template>
-      <div class="form-group col-md-6">
-      <mat-form-field>
-        <mat-label>Project Name</mat-label>
-        <input matInput formControlName="projectName"  placeholder="" required>
-      </mat-form-field>
+
+  <mat-step [completed]="stepTwo">
+    <ng-template matStepLabel>Panel Details</ng-template>
+    <mat-chip-list aria-label="Panel selection">
+      <div fxLayout="row wrap" fxLayout.xs="column" fxLayoutGap="20px" fxLayoutAlign="space-around center" >
+        <mat-card *ngFor="let panel of panels" class="card" fxFlex='20'>
+          <mat-card-header>
+            <mat-card-title>{{panel.name}}</mat-card-title>
+          </mat-card-header>
+          <img mat-card-image *ngIf="panel.technology == 'Monocrystalline'" src="../../../../assets//images//monocrystalline-solar-panel-500x500.jpg"alt="Photo of a Shiba Inu">
+          <img mat-card-image *ngIf="panel.technology == 'Polycrystalline'" src="../../../../assets//images/polycrystalline-solar-panel-500x500.jpg"alt="Photo of a Shiba Inu">
+          <img mat-card-image *ngIf="panel.technology == 'Thin film'" src="../../../../assets//images/48-Sharp-Thin-Film-Amorphous-Solar-Panel.jpg"alt="Photo of a Shiba Inu">
+          
+          <mat-card-content>
+            <p>
+              <strong>Technology :</strong>{{panel.technology}}<br>
+              <strong>Capacity :</strong>{{panel.capacity}} Kw<br>
+              <strong>Height :</strong>{{panel.height}} cm<br>
+              <strong>Width :</strong>{{panel.width}} cm<br>
+
+            </p>
+          </mat-card-content>
+          <mat-card-actions>
+            <mat-chip (click)='choosePanel(panel)'>Select panel</mat-chip>
+          </mat-card-actions>
+        </mat-card>
+          <button class="plus-button plus-button--large" (click)='newPanel()'></button>
+          
+
       </div>
-      <div class="form-group col-md-6">
-      <mat-form-field>
-        <mat-label>Tilt (DEG°)</mat-label>
-        <input matInput formControlName="tilt"  placeholder="" required>
-      </mat-form-field>
-      </div>
-      
-      </div>
-      <div class="form-row">
-      <div class="form-group col-md-6">
-      <mat-form-field>
-        <mat-label>Azimuth (DEG°)</mat-label>
-        <input matInput formControlName="azimuth"  placeholder="" required>
-      </mat-form-field>
-      </div>
-      <div class="form-group col-md-6">
-      <mat-form-field>
-        <mat-label>Install date</mat-label>
-        <input type="date" matInput  formControlName="install_date" placeholder="" required>
-      </mat-form-field>
-      </div>
-      </div>
-      <div>
-        <button mat-button matStepperPrevious >Back</button>
-        <button mat-button matStepperNext [disabled]='third()'>Next</button>
-      </div>
-      
-    </form>
+    </mat-chip-list>
+
   </mat-step>
-
-  <mat-step [stepControl]="panelFormGroup">
-    <form [formGroup]="panelFormGroup" >
-      <div class="form-row">
-      <ng-template matStepLabel>Panel Details</ng-template>
-      <div class="form-group col-md-6">
-      <mat-form-field>
-        <mat-label>Width (cm)</mat-label>
-        <input matInput formControlName="panelWidth"  placeholder="" required>
-      </mat-form-field>
-      </div>
-      <div class="form-group col-md-6">
-      <mat-form-field>
-        <mat-label>Height (cm)</mat-label>
-        <input matInput formControlName="panelHeight"  placeholder="" required>
-      </mat-form-field>
-      </div>
-      
-      </div>
-      <div class="form-row">
-      <div class="form-group col-md-6">
-      <mat-form-field>
-        <mat-label>Cpacity (kW)</mat-label>
-        <input matInput formControlName="panelCapacity"  placeholder="" required>
-      </mat-form-field>
-      </div>
   
-      </div>
+  <mat-step>
+    <form [formGroup]="configurationForlGroup">
+      <ng-template matStepLabel>System configuration</ng-template>
+      <mat-form-field>
+        <mat-label>Azimuth</mat-label>
+        <input matInput formControlName="azimuth" [value]="azimuth" placeholder="north" required>
+      </mat-form-field>
+      <mat-form-field>
+      <mat-label>Pnal tilt</mat-label>
+        <input matInput formControlName="tilt" [value]="tilt" required>
+      </mat-form-field>
+      <mat-form-field>
+      <mat-label>Number of panels</mat-label>
+        <input matInput formControlName="nbPanels" [value]='nb_panels' required>
+      </mat-form-field>
       <div>
-        <button mat-button matStepperPrevious >Back</button>
-        <button mat-button type="submit" (click)="onSubmit()" >Submit</button>
+        <button mat-button matStepperPrevious>Back</button>
+        <button mat-button matStepperNext>Next</button>
       </div>
     </form>
-
   </mat-step>
 
  

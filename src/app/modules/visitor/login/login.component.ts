@@ -4,9 +4,9 @@ import {AuthService as auth}  from '../../../services/auth/auth.service';
 import { Router } from '@angular/router';
 import {
   AuthService,
-  FacebookLoginProvider,
   GoogleLoginProvider
 } from 'angular-6-social-login';
+import { MatSnackBar } from '@angular/material/snack-bar';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -14,8 +14,9 @@ import {
 })
 export class LoginComponent implements OnInit {
 
+  imageNormal = '../../../../assets//images//btn_google_signin_light_normal_web@2x.png';
   loginFormGroup : FormGroup;
-  constructor(private fb: FormBuilder, private service: auth, private route: Router,private socialAuthService: AuthService) { }
+  constructor(private fb: FormBuilder, private service: auth, private route: Router,private socialAuthService: AuthService,private _snackBar: MatSnackBar) { }
 
   ngOnInit(): void {
     this.loginFormGroup = this.fb.group({
@@ -30,6 +31,7 @@ export class LoginComponent implements OnInit {
     let body=this.loginFormGroup.value;
     let user = {"email": body.email, "password": body.password};
     this.service.login(user).subscribe((res)=>{
+      console.log('ahla1');
       localStorage.setItem('token', res['token']);
       if(this.service.isLoggedUser())
       {
@@ -41,20 +43,22 @@ export class LoginComponent implements OnInit {
         this.route.navigate(['admin']);
       }
     },(err)=>{
-      console.log(err);
-    });
+        this._snackBar.open(err.error.message,"close",{
+          duration: 2000,
+        });
+        });
 
   }
 
-  /*public socialSignIn(socialPlatform : string) {
+
+  public socialSignIn(socialPlatform : string) {
     let socialPlatformProvider;
-    if(socialPlatform == "google"){
-      socialPlatformProvider = GoogleLoginProvider.PROVIDER_ID;
-    } 
+    socialPlatformProvider = GoogleLoginProvider.PROVIDER_ID;
     this.socialAuthService.signIn(socialPlatformProvider).then(
       (userData) => {
         console.log(socialPlatform+" sign in data : " , userData);
         this.service.socialAuth(userData.token).subscribe(res => {
+          console.log(res);
           localStorage.setItem('token',res['token']);
           if(this.service.isLoggedUser())
           {
@@ -69,7 +73,7 @@ export class LoginComponent implements OnInit {
             
       }
     );
-  }*/
+  }
   
 }
 

@@ -1,35 +1,77 @@
 
-<div fxLayout="raw wrap" fxLayout.xs="column" fxLayoutAlign="space-between center" fxLayoutGap="20px" class="stats-cards">
-      <div class="col-xl-3 col-md-6 mb-4" fxFlex="50" cdkDrag cdkDragLockAxis="y">
-        <div class="card border-left-primary shadow h-100 py-2">
-          <div class="card-body">
-            <div class="row no-gutters align-items-center">
-              <div class="col mr-2">
-                <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Total production</div>
-                <div class="h5 mb-0 font-weight-bold text-gray-800">{{pv_total}}Kw</div>
-              </div>
-              <div class="col-auto">
-                <i class="fas fa-chart-area fa-2x text-gray-300"></i>
-              </div>
+<div fxLayout="raw" fxLayout.xs="column" fxLayoutAlign="space-between center" fxLayoutGap="20px" class="stats-cards">
+  <div fxFlex="25" fxLayout="raw wrap" >
+    <div class="col-xl-3 col-md-6 mb-4 pointer" fxFlex="100" [routerLink]="['/admin/users']" routerLinkActive="router-link-active" >
+      <div class="card border-left-primary shadow h-100 py-2">
+        <div class="card-body">
+          <div class="row no-gutters align-items-center">
+            <div class="col mr-2">
+              <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Users</div>
+              <div class="h5 mb-0 font-weight-bold text-gray-800">{{users}}</div>
+            </div>
+            <div class="col-auto">
+              <i class="fas fa-users fa-2x text-gray-300"></i>
             </div>
           </div>
         </div>
+      </div>
+    </div>
+
+    <div class="col-xl-3 col-md-6 mb-4 pointer" fxFlex="100" [routerLink]="['/admin/projects']" routerLinkActive="router-link-active" >
+      <div class="card border-left-primary shadow h-100 py-2">
+        <div class="card-body">
+          <div class="row no-gutters align-items-center">
+            <div class="col mr-2">
+              <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Projects</div>
+              <div class="h5 mb-0 font-weight-bold text-gray-800">{{nb_projects}}</div>
+            </div>
+            <div class="col-auto">
+              <i class="fas fa-tasks fa-2x text-gray-300"></i>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>      
+    
+  </div>
+  <app-widget-map *ngIf="markers[0]" [markers]="markers" fxFlex="50" fxFlex.md='100' ></app-widget-map>
+  <h1 *ngIf="!markers[0]"> THERE ARE NO PROJECTS FOR NOW  </h1>
+  <div fxFlex="25" fxLayout="raw wrap" >
+
+    <div class="col-xl-3 col-md-6 mb-4" fxFlex="100" >
+      <div class="card border-left-primary shadow h-100 py-2">
+        <div class="card-body">
+          <div class="row no-gutters align-items-center">
+            <div class="col mr-2">
+              <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Total production</div>
+              <div class="h5 mb-0 font-weight-bold text-gray-800">{{pv_total}}Kw</div>
+            </div>
+            <div class="col-auto">
+              <i class="fas fa-chart-area fa-2x text-gray-300"></i>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <div class="col-xl-3 col-md-6 mb-4" fxFlex="100">
+      <div class="card border-left-primary shadow h-100 py-2">
+        <div class="card-body">
+          <div class="row no-gutters align-items-center">
+            <div class="col mr-2">
+              <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Number of panels</div>
+              <div class="h5 mb-0 font-weight-bold text-gray-800">{{panels_number}} panel</div>
+            </div>
+            <div class="col-auto">
+              <i class="fas fa-sun fa-2x text-gray-300"></i>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+      
+      </div>
+
       </div>
       
-      <div class="col-xl-3 col-md-6 mb-4" fxFlex="50" cdkDrag cdkDragLockAxis="y">
-        <div class="card border-left-primary shadow h-100 py-2">
-          <div class="card-body">
-            <div class="row no-gutters align-items-center">
-              <div class="col mr-2">
-                <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Number of panels</div>
-                <div class="h5 mb-0 font-weight-bold text-gray-800">{{panels_number}} panel</div>
-              </div>
-              <div class="col-auto">
-                <i class="fas fa-sun fa-2x text-gray-300"></i>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      </div>
-    <app-widget-map *ngIf="markers[0]" [markers]="markers" fxFlex="100"></app-widget-map>
+      

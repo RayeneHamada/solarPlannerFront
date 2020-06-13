@@ -1,5 +1,5 @@
 
-<table class="table" class="mat-elevation-z8">
+<table *ngIf="projects[0]" class="table" class="mat-elevation-z8">
     <thead>
         <th scope="col">Name</th>
         <th scope="col">Location</th>
@@ -19,9 +19,10 @@
         <td>{{p.surface | number:'1.0-0'}} m²</td>
         <td>{{p.total_prod | number:'1.0-0'}} Kw</td>
 
-        <td><button mat-button (click)='deleteProject(p)'>Delete <i class="material-icons">
+        <td><button mat-button (click)='openDialog(p)'>Delete <i class="material-icons">
           delete
           </i></button></td>
       </tr>
     </tbody>
   </table>
+  <h1 *ngIf="!projects[0]"> THERE ARE NO PROJECTS FOR NOW</h1>

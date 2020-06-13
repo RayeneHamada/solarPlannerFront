@@ -27,6 +27,8 @@
         <div class="s_jump_page">
           <button type="button" class="ss_btn submitForm" (click)="register()">sign up</button>
           <a href="login.html" class="login_anchor" routerLink="/login">login</a>
+          <img id='google' [src]="imageNormal" (click)="socialSignIn('google')" height="50" width="200" style="text-align: center;">
+         
           <div class="response"></div>
         </div>
       </form>

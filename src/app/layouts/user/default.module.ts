@@ -1,4 +1,4 @@
-import { AddProjectComponent } from '../../modules/user/add-project/add-project.component';
+import { AddProjectComponent, CreatePanelDialog } from '../../modules/user/add-project/add-project.component';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import {MatStepperModule} from '@angular/material/stepper'
@@ -14,7 +14,7 @@ import {  MatCardModule } from '@angular/material/card';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { HighchartsChartModule } from 'highcharts-angular';
 import {MatFormFieldModule} from '@angular/material/form-field';
-import { ReactiveFormsModule } from '@angular/forms';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import {MatInputModule} from '@angular/material/input';
 import {MatTableModule} from '@angular/material/table';
 import {MatPaginatorModule} from '@angular/material/paginator';
@@ -28,7 +28,13 @@ import { HttpModule } from '@angular/http';
 import { PdfViewerModule } from 'ng2-pdf-viewer';
 import { BrowserModule } from '@angular/platform-browser';
 import {DragDropModule} from '@angular/cdk/drag-drop';
-import { UserProjectsComponent } from 'src/app/modules/user/user-projects/user-projects.component';
+import { UserProjectsComponent, ConfirmationDialog } from 'src/app/modules/user/user-projects/user-projects.component';
+import {MatDialogModule} from '@angular/material/dialog';
+import {MatSelectModule} from '@angular/material/select';
+import {MatChipsModule} from '@angular/material/chips';
+
+
+
 
 
 @NgModule({
@@ -37,8 +43,14 @@ import { UserProjectsComponent } from 'src/app/modules/user/user-projects/user-p
     DashboardComponent,
     AddProjectComponent,
     ViewProjectComponent,
-    UserProjectsComponent
+    UserProjectsComponent,
+    ConfirmationDialog,
+    CreatePanelDialog
 
+  ],
+  entryComponents: [
+    ConfirmationDialog,
+    CreatePanelDialog
   ],
   imports: [
     CommonModule,
@@ -68,7 +80,11 @@ import { UserProjectsComponent } from 'src/app/modules/user/user-projects/user-p
     HttpModule,
     BrowserModule, 
     PdfViewerModule,
-    MatButtonModule
+    MatButtonModule,
+    MatDialogModule,
+    MatSelectModule,
+    FormsModule,
+    MatChipsModule
     
 
   ]

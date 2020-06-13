@@ -14,7 +14,14 @@ export class DashboardComponent implements OnInit {
 
   projects = [];
   markers = [];
-  nb_visits
+  total_prod = '';
+  nb_panels = 0;
+  projects_number = 0;
+  nb_visits;
+  nb_projects = 0;
+  prod_today = 0;
+  next_prod = 0;
+  previous_prod = 0;
   loaded = false;
   constructor(private service: ProjectService,private spinner: NgxSpinnerService,private _snackBar: MatSnackBar) {
   }
@@ -41,21 +48,35 @@ export class DashboardComponent implements OnInit {
    
     
     this.service.getDashboard().subscribe(
-      p=>{p.forEach(p => {
+      p=>{p.projects.forEach(projet => {
         this.markers.push(
           {
-            lat: p.lat,
-            lng: p.lon,
-            label: p.name,
-            id: p._id,
-            numberOfPanels:p.panel_number,
-            surface:p.surface,
+            lat: projet.lat,
+            lng: projet.lon,
+            label: projet.name,
+            id: projet._id,
+            numberOfPanels:projet.panel_number,
+            surface:projet.surface,
             draggable:false
           }
-        )
+        );
+        this.nb_panels+= Number(projet.panel_number);
+        projet['prod_today'].forEach(today => {
+          this.prod_today+= Number(Number(today[0].pv).toFixed());
+        })
+        projet.next_prod.forEach(next => {
+          this.next_prod+=Number(Number(next[0].pv).toFixed());
+        })
+        projet.previous_prod.forEach(pre => {
+          this.previous_prod+=Number(Number(pre[0].pv).toFixed());
+        })
+        
       });
+
+      this.total_prod = Number(p.total_prod).toFixed();
+      this.projects_number = this.markers.length;
         }
-      ,err=>{console.log("front err"+err)}
+      ,err=>{console.log(err)}
     );
   }
 }

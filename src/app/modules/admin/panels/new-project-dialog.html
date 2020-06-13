@@ -1,0 +1,32 @@
+<h1 mat-dialog-title>Create a new panel</h1>
+<div mat-dialog-content>
+  <mat-form-field class="example-full-width">
+    <mat-label>Panel Name</mat-label>
+    <input matInput placeholder="Name" type="text" [(ngModel)]="data.name">
+  </mat-form-field>
+  <mat-form-field class="example-full-width">
+    <mat-label>Height (cm)</mat-label>
+    <input matInput placeholder="height" type="number" [(ngModel)]="data.height">
+  </mat-form-field>
+  <mat-form-field>
+  <mat-label>Width (cm)</mat-label>
+  <input matInput placeholder="width" type="number" [(ngModel)]="data.width">
+</mat-form-field>
+<mat-form-field>
+<mat-label>Capacity (W)</mat-label>
+<input matInput placeholder="Old password" type="text" [(ngModel)]="data.capacity">
+</mat-form-field>
+<mat-form-field>
+  <mat-label>Technology</mat-label>
+  <select matNativeControl required [(ngModel)]="data.technology">
+    <option [ngValue]="Monocrystalline">Monocrystalline</option>
+    <option [ngValue]="Polycrystalline">Polycrystalline</option>
+    <option [ngValue]="Thin_film">Thin film</option>
+  </select>
+</mat-form-field>
+</div>
+<div mat-dialog-actions>
+  <button mat-raised-button  color="primary"(click)="onNoClick()" cdkFocusInitial>Change</button>
+  <button mat-raised-button mat-dialog-close>Cancel</button>
+
+</div>

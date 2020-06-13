@@ -17,7 +17,6 @@ export class SidebarComponent implements OnInit {
     this.isAdmin = this.service.isAdmin();
     this.isUser = this.service.isLoggedUser();
     this.service.userProfile().subscribe(p=>{
-      console.log(p);
       this.username = p.user.fullName;
     });
     

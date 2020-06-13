@@ -1,2 +1,113 @@
-<app-widget-map *ngIf="markers[0]; else loggedOut"  [markers]="markers"></app-widget-map>
-<ng-template #loggedOut><button mat-button>Create your first project</button></ng-template>
+<div fxLayout="raw" fxLayout.xs="column" fxLayoutAlign="space-between center" fxLayoutGap="20px" class="stats-cards" *ngIf="markers[0]; else loggedOut">
+    <div fxFlex="25" fxLayout="raw wrap" > 
+        <div class="col-xl-3 col-md-6 mb-4" fxFlex="100" [routerLink]="['/projects/all']" routerLinkActive="router-link-active" >
+            <div class="card border-left-primary shadow h-100 py-2">
+              <div class="card-body">
+                <div class="row no-gutters align-items-center">
+                  <div class="col mr-2">
+                    <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Projects</div>
+                    <div class="h5 mb-0 font-weight-bold text-gray-800">{{projects_number}}</div>
+                  </div>
+                  <div class="col-auto">
+                    <i class="fas fa-tasks fa-2x text-gray-300"></i>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          
+          <div class="col-xl-3 col-md-6 mb-4" fxFlex="100">
+            <div class="card border-left-primary shadow h-100 py-2">
+              <div class="card-body">
+                <div class="row no-gutters align-items-center">
+                  <div class="col mr-2">
+                    <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Number of panels</div>
+                    <div class="h5 mb-0 font-weight-bold text-gray-800">{{nb_panels}} </div>
+                  </div>
+                  <div class="col-auto">
+                    <i class="fas fa-sun fa-2x text-gray-300"></i>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+            <div class="col-xl-3 col-md-6 mb-4" fxFlex="100" >
+                <div class="card border-left-primary shadow h-100 py-2">
+                    <div class="card-body">
+                    <div class="row no-gutters align-items-center">
+                        <div class="col mr-2">
+                        <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Total production</div>
+                        <div class="h5 mb-0 font-weight-bold text-gray-800">{{total_prod}} Kw</div>
+                        </div>
+                        <div class="col-auto">
+                        <i class="fas fa-chart-area fa-2x text-gray-300"></i>
+                        </div>
+                    </div>
+                    </div>
+                </div>
+            </div>
+        
+    </div>
+    <app-widget-map   [markers]="markers"></app-widget-map>
+    <app-widget-map *ngIf="markers[0]" [markers]="markers" fxFlex="50" fxFlex.md='100' ></app-widget-map>
+    <div fxFlex="25" fxLayout="raw wrap" >
+        <div class="col-xl-3 col-md-6 mb-4" fxFlex="100" >
+          <div class="card border-left-primary shadow h-100 py-2">
+            <div class="card-body">
+              <div class="row no-gutters align-items-center">
+                <div class="col mr-2">
+                  <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Production last 6 days</div>
+                  <div class="h5 mb-0 font-weight-bold text-gray-800">{{previous_prod}} Kw</div>
+                </div>
+                <div class="col-auto">
+                  <i class="fas fa-bolt fa-2x text-gray-300"></i>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-xl-3 col-md-6 mb-4" fxFlex="100" >
+            <div class="card border-left-primary shadow h-100 py-2">
+              <div class="card-body">
+                <div class="row no-gutters align-items-center">
+                  <div class="col mr-2">
+                    <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Production today</div>
+                    <div class="h5 mb-0 font-weight-bold text-gray-800">{{prod_today}} Kw</div>
+                  </div>
+                  <div class="col-auto">
+                    <i class="fas fa-bolt fa-2x text-gray-300"></i>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-xl-3 col-md-6 mb-4" fxFlex="100" >
+            <div class="card border-left-primary shadow h-100 py-2">
+              <div class="card-body">
+                <div class="row no-gutters align-items-center">
+                  <div class="col mr-2">
+                    <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Production next 6 days</div>
+                    <div class="h5 mb-0 font-weight-bold text-gray-800">{{next_prod}} Kw</div>
+                  </div>
+                  <div class="col-auto">
+                    <i class="fas fa-bolt fa-2x text-gray-300"></i>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+  
+       
+        </div>
+</div>
+<ng-template #loggedOut >
+  <div class="noprojects">
+    <h1>You have no projects for now</h1>
+    <button mat-button [routerLink]="['/projects/add']" routerLinkActive="router-link-active" >Create your first project</button>
+  </div>
+</ng-template>
+
+        
+        
+   

@@ -8,7 +8,6 @@ import { DefaultComponent } from './layouts/user/default.component';
 import { ViewProjectComponent } from './modules/user/view-project/view-project.component';
 import { VisitorComponent } from './layouts/visitor/visitor.component';
 import { RegisterComponent } from './modules/visitor/register/register.component';
-import { LoginComponent } from './modules/visitor/login/login.component';
 import { AuthGuardGuard } from './guards/auth-guard.guard';
 import { AdminComponent } from './layouts/admin/admin.component';
 import { AdminGuard } from './guards/admin/admin.guard';
@@ -18,6 +17,8 @@ import { UsersListComponent } from './modules/admin/users-list/users-list.compon
 import { AdminDashboardComponent } from './modules/admin/admin-dashboard/admin-dashboard.component';
 import { NotFoundComponent } from './modules/errors/not-found/not-found.component';
 import { ResetPasswordComponent } from './modules/visitor/reset-password/reset-password.component';
+import { LoginComponent } from './modules/visitor/login/login.component';
+import { PanelsComponent } from './modules/admin/panels/panels.component';
 
 
 
@@ -62,7 +63,7 @@ const routes: Routes = [
         component: LandingPageComponent
       },
       {
-        path:'forgot_software',  
+        path:'forgot_password',  
         component: ForgotPasswordComponent
       },
       {
@@ -87,6 +88,10 @@ const routes: Routes = [
       {
         path:'users',
         component: UsersListComponent
+      },
+      {
+        path:'panels',
+        component: PanelsComponent
       }
     ]
   },

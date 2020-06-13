@@ -8,10 +8,12 @@ table {
   width: 100%;
 }
 agm-map {
-  height: 300px;
+  height: auto;
+  width: auto;
 }
-button{
-  position:relative;
-    top:50%; 
-    left:50%;
+.noprojects{
+  position: absolute;
+    top:40%; 
+    left:40%;
+    text-align: center;
 }

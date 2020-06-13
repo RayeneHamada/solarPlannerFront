@@ -106,7 +106,6 @@ export class ViewProjectComponent implements OnInit {
              }
             }  
           });
-          console.log(this.pv_today_temp);
           this.pv_today_temp.forEach(x => {
             this.sun_hours.push(x.time);
             this.pv_today.push(x.pv);
@@ -118,18 +117,22 @@ export class ViewProjectComponent implements OnInit {
           this.estimation_data.reverse();
           this.estimations = Number(this.estimations.toFixed());
           this.forecast = Number(this.forecast.toFixed());
-          console.log({'waqt':this.sun_hours,'pvtoday':this.pv_today});
+          this.service.getSunPath(this.id).subscribe(s =>{
+            console.log(s);
+            s.forEach(x => {
+              this.azimuth.push(x.azimuth);
+              this.altitude.push(x.solar_elevation);
+            })
+            console.log({'waqt':this.sun_hours,'pvtoday':this.pv_today,'altitude':this.altitude,'azimuth':this.azimuth});
+            
+          });
 
           
         }
       ,err=>{console.log(err)}
     );
-    this.service.getSunPath(this.id).subscribe(s =>{
-      s.forEach(x => {
-        this.azimuth.push(x.azimuth);
-        this.altitude.push(x.solar_elevation);
-      })
-    });
+    
+
 
 
    

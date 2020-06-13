@@ -1,7 +1,7 @@
 import { MatButtonModule } from '@angular/material/button';
 import { FooterComponent } from './components/footer/footer.component';
 import { SidebarComponent } from './components/sidebar/sidebar.component';
-import { HeaderComponent } from './components/header/header.component';
+import { HeaderComponent, ChangePassword } from './components/header/header.component';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MatDividerModule } from '@angular/material/divider';
@@ -20,6 +20,11 @@ import {MatTreeModule} from '@angular/material/tree';
 import { AgmJsMarkerClustererModule } from '@agm/js-marker-clusterer';
 import { ColumnComponent } from './widgets/column/column.component';
 import { MultiaxesComponent } from './widgets/multiaxes/multiaxes.component';
+import {MatDialogModule} from '@angular/material/dialog';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import { FormsModule, } from '@angular/forms';
+import {MatInputModule} from '@angular/material/input';
+
 
 
 
@@ -32,7 +37,11 @@ import { MultiaxesComponent } from './widgets/multiaxes/multiaxes.component';
     MapComponent,
     SplineComponent,
     ColumnComponent,
-    MultiaxesComponent
+    MultiaxesComponent,
+    ChangePassword,
+  ],
+  entryComponents:[
+    ChangePassword
   ],
   imports: [
     CommonModule,
@@ -51,7 +60,11 @@ import { MultiaxesComponent } from './widgets/multiaxes/multiaxes.component';
     HttpClientModule,
     HighchartsChartModule,
     MatTreeModule,
-    AgmJsMarkerClustererModule
+    AgmJsMarkerClustererModule,
+    MatDialogModule,
+    MatFormFieldModule,
+    FormsModule,
+    MatInputModule
   ],
   providers: [
   ],

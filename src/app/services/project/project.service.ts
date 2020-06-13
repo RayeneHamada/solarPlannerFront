@@ -136,5 +136,16 @@ export class ProjectService {
     };
        return this.http.get<any>('http://127.0.0.1:1235/project/projects-number',httpOptions);
   }
+  getConfig()
+  {
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer ' + localStorage.getItem("token")
+      })
+
+    };
+       return this.http.post<any>('http://127.0.0.1:1235/project/config',httpOptions);
+  }
 
 }

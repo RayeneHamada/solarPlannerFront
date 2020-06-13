@@ -1,0 +1,16 @@
+<h1 mat-dialog-title>Change Password</h1>
+<div mat-dialog-content>
+  <mat-form-field class="example-full-width">
+    <mat-label>Od password</mat-label>
+    <input matInput placeholder="Old password" type="password" [(ngModel)]="data.old">
+  </mat-form-field>
+  <mat-form-field class="example-full-width">
+    <mat-label>New password</mat-label>
+    <input matInput placeholder="Old password" type="password" [(ngModel)]="data.new">
+  </mat-form-field>
+</div>
+<div mat-dialog-actions>
+  <button mat-raised-button  color="primary"(click)="onNoClick()" cdkFocusInitial>Change</button>
+  <button mat-raised-button mat-dialog-close>Cancel</button>
+
+</div>

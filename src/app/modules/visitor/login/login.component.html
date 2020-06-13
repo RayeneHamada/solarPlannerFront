@@ -1,11 +1,4 @@
-<!--<form [formGroup]="loginFormGroup">
-
-     email: <input  formControlName="email"  placeholder="" required><br>
-     password : <input  formControlName="password"  placeholder="" required><br>
-     <button class="button" type="submit" (click)="login()">Signin</button>
-   
-   </form>-->
-   <div class="ss_login_bg"> 
+<div class="ss_login_bg"> 
     <section class="s_login">
       <div class="ss_box_bg">
         <a routerLink=""><img src="assets/images/svg/logo1.svg" class="img-fluid" alt="logo"/></a>
@@ -31,12 +24,12 @@
               <input type="checkbox">
               <span class="s_checkbox"></span>
             </label>
-            <a href="forget-password.html">Forgot Password ?</a>
+            <a routerLink="/forgot_password">Forgot Password ?</a>
           </div>
           <div class="s_jump_page">
             <button type="button" class="ss_btn submitForm" (click)="login()">login</button>
-            <!--<button (click)="socialSignIn('google')">Sign in with Google</button>-->
             <a href="signup.html" class="login_anchor" routerLink="/registration">sign up</a>
+            <img id='google' [src]="imageNormal" (click)="socialSignIn('google')" height="50" width="200" style="text-align: center;">
             <div class="response"></div>
           </div>
         </form>

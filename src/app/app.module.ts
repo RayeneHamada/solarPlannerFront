@@ -14,13 +14,15 @@ import { JwtModule } from "@auth0/angular-jwt";
 import { HttpClientModule } from "@angular/common/http";
 import { FileService } from './services/file/file.service';
 import { UserService } from './services/user/user.service';
+import {PanelService} from './services/panel/panel.service'
 
 import { AdminModule } from './layouts/admin/admin.module';
 import {AdminGuard} from './guards/admin/admin.guard';
 import {
   SocialLoginModule,
   AuthServiceConfig,
-  GoogleLoginProvider,
+  FacebookLoginProvider,
+  GoogleLoginProvider
 } from "angular-6-social-login";
 
 
@@ -29,10 +31,17 @@ export function getAuthServiceConfigs() {
   let config = new AuthServiceConfig(
       [
 
+
+
+        {
+          id: FacebookLoginProvider.PROVIDER_ID,
+          provider: new FacebookLoginProvider("533476774206014")
+        },
         {
           id: GoogleLoginProvider.PROVIDER_ID,
-          provider: new GoogleLoginProvider("225229836646-ii5p4j4ghccjhsssmuo6augeti1461vn.apps.googleusercontent.com")
+          provider: new GoogleLoginProvider("225229836646-8tor2vbkoqpv12l7r5dnpvbqi67prgbo.apps.googleusercontent.com")
         }
+
         
       ]
   );
@@ -76,6 +85,7 @@ export function tokenGetter() {
     FileService,
     AdminGuard,
     UserService,
+    PanelService,
     {
       provide: AuthServiceConfig,
       useFactory: getAuthServiceConfigs

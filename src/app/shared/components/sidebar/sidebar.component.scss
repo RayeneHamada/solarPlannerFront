@@ -14,3 +14,35 @@
     }
   }
 }
+@keyframes rotation {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+svg {
+  width: 100px;
+  margin: auto;
+  display:block;
+  animation: rotation 10s linear infinite;
+  .one {
+      transition: fill 1s;
+  }
+  
+  &:hover {
+    .one {
+      fill: #FFCE00;
+    };
+    .two{
+      fill:#ffb000;
+    }
+    .middle{
+      fill:#ffb000;
+    }
+  }
+}
+.two{fill:#FFCE00;}
+.one{fill:#ffb000;}
+.middle{fill:#FFFF00;}

@@ -3,7 +3,7 @@
     <agm-polygon [paths]= 'area' [strokeColor]='strokeColor' [visible]='visible' ></agm-polygon>
 </agm-map>
 
-<agm-map class="defaultMap" *ngIf="!center && !area" [latitude]="20" [longitude]="0" [zoom]="2"[disableDefaultUI]="true"
+<agm-map class="defaultMap" *ngIf="!center && !area" [latitude]="20" [longitude]="0" [zoom]="2"[disableDefaultUI]="false"
 [zoomControl]="true" [mapTypeId]="map_type" [minZoom]="defaultzoom" [disableDefaultUI]="true"
 [clickableIcons]="false" (mapReady)="onMapReady($event)" >
 <agm-marker-cluster imagePath="https://raw.githubusercontent.com/googlemaps/v3-utility-library/master/markerclustererplus/images/m">

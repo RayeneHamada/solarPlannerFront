@@ -1,3 +1,27 @@
 ul li {
   list-style: none;
 }
+.fa-sun{
+  color: #FFCE00;
+}
+
+#title:hover a{
+  color: #FFCE00;
+}
+#title a{
+  color: #FFFFFF;
+}
+#title:hover .fa-sun{
+  color: #ffffff;
+
+}
+.fa-sun{
+  animation:spin 7s linear infinite;
+}
+#title:hover .fa-sun{
+  animation:spin 7s linear infinite;
+  animation-direction: reverse;
+}
+
+@keyframes spin { 100% {transform:rotate(360deg); } }
+

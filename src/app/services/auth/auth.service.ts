@@ -79,6 +79,11 @@ export class AuthService {
     return this.http.post<any>('http://127.0.0.1:1235/user/reset',password,httpOptions);
   }
 
+  socialAuth(token)
+  {
+    return this.http.post<any>('http://127.0.0.1:1235/user/googleauth',{'access_token':token});
+  }
+
 
   
 }

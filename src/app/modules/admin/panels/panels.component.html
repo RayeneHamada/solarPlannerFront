@@ -1,0 +1,30 @@
+
+<table *ngIf="panels" class="table" class="mat-elevation-z8">
+    <thead>
+        <th scope="col">Name</th>
+        <th scope="col">Dimensions</th>
+        <th scope="col">Capacity</th>
+        <th scope="col">Technology</th>
+        <th scope="col">Visibility</th>
+        <th scope="col">Owner</th>
+        <th scope="col">Action</th>
+    </thead>
+    <tbody>
+      <tr  *ngFor="let p of panels" >
+        <th scope="row"  >{{p.name}}</th>
+        <td>{{p.height}}/{{p.width}}</td>
+        <td>{{p.capacity}}</td>
+        <td>{{p.technology}}</td>
+        <td>{{p.type}}</td>
+        <td>{{p.owner.fullName}}</td>
+
+        <td><button mat-button (click)='openDialog(p)'>Delete <i class="material-icons">
+          delete
+          </i></button></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  <button mat-fab color="accent" class="fab" (click)="newPanel()">
+    <mat-icon>add</mat-icon>
+  </button>

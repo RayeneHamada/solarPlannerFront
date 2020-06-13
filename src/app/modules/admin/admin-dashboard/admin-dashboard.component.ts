@@ -14,7 +14,9 @@ export class AdminDashboardComponent implements OnInit {
   nb_visits
   loaded = false;
   panels_number = 0;
-  pv_total = 0;
+  pv_total = '0';
+  users='0';
+  nb_projects=0;
   constructor(private service: ProjectService,private spinner: NgxSpinnerService,private _snackBar: MatSnackBar) {
   }
 
@@ -40,7 +42,9 @@ export class AdminDashboardComponent implements OnInit {
    
     
     this.service.getAdminDashboard().subscribe(
-      p=>{p.forEach(p => {
+      p=>{
+        console.log(p);
+        p.projects.forEach(p => {
         this.markers.push(
           {
             lat: p.lat,
@@ -53,12 +57,16 @@ export class AdminDashboardComponent implements OnInit {
           }
         )
       });
+      this.nb_projects = this.markers.length;
+      this.users = p.users;
+
+
         }
-      ,err=>{console.log("front err"+err)}
+      ,err=>{console.log(err)}
     );
     this.service.getProjectsNumbers().subscribe(
       p=>{
-        this.pv_total=p[0].total_pv;
+        this.pv_total=Number(p[0].total_pv).toFixed();
         this.panels_number=p[0].total_panels;
       }
     )
