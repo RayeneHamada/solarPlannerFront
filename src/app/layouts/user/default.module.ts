@@ -32,6 +32,8 @@ import { UserProjectsComponent, ConfirmationDialog } from 'src/app/modules/user/
 import {MatDialogModule} from '@angular/material/dialog';
 import {MatSelectModule} from '@angular/material/select';
 import {MatChipsModule} from '@angular/material/chips';
+import {MatSlideToggleModule} from '@angular/material/slide-toggle';
+import { PanelListComponent, NewPanelDialog } from 'src/app/modules/user/panels/panel-list/panel-list.component';
 
 
 
@@ -45,12 +47,15 @@ import {MatChipsModule} from '@angular/material/chips';
     ViewProjectComponent,
     UserProjectsComponent,
     ConfirmationDialog,
-    CreatePanelDialog
+    CreatePanelDialog,
+    PanelListComponent,
+    NewPanelDialog
 
   ],
   entryComponents: [
     ConfirmationDialog,
-    CreatePanelDialog
+    CreatePanelDialog,
+    NewPanelDialog
   ],
   imports: [
     CommonModule,
@@ -84,7 +89,8 @@ import {MatChipsModule} from '@angular/material/chips';
     MatDialogModule,
     MatSelectModule,
     FormsModule,
-    MatChipsModule
+    MatChipsModule,
+    MatSlideToggleModule
     
 
   ]

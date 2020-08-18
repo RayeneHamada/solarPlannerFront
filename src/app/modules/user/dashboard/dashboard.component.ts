@@ -34,7 +34,7 @@ export class DashboardComponent implements OnInit {
       sessionStorage.setItem('nb_visits','1');
       setTimeout(() => {
         this._snackBar.open("Welcome to dashboard","close",{
-          duration: 2000,
+          duration: 700,
         });
     
       }, 5000);
@@ -42,9 +42,8 @@ export class DashboardComponent implements OnInit {
     this.spinner.show();
  
     setTimeout(() => {
-      /** spinner ends after 5 seconds */
       this.spinner.hide();
-    }, 3000);
+    }, 1000);
    
     
     this.service.getDashboard().subscribe(

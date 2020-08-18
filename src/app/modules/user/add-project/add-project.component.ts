@@ -19,15 +19,17 @@ export class AddProjectComponent implements OnInit {
   stepone: boolean = false;
   stepTwo: boolean = false;
   panels: any[];
-  name;
+  name='';
   height;
   width;
   capacity;
   technology;
+  autoconfig=false;
   nb_panels = 0;
-  azimuth = 'south';
+  azimuth = 'South';
   tilt = 0;
   panel = null;
+  rawSpacing = 0;
   
   center: any = {
     lat: 40.335652,
@@ -36,7 +38,6 @@ export class AddProjectComponent implements OnInit {
 
   isLinear = true;
 
-  projectFormGroup : FormGroup;
   panelFormGroup : FormGroup;
   configurationForlGroup : FormGroup;
 
@@ -44,23 +45,20 @@ export class AddProjectComponent implements OnInit {
 
   constructor(private fb: FormBuilder, private service:ProjectService,private panelService:PanelService,private router: Router,public dialog: MatDialog,private _snackBar: MatSnackBar) {
     this.stepone = false;
+    this.stepTwo = false;
+
   }
 
   ngOnInit() {
 
-    this.panelService.globals().subscribe(p=>{
+    this.panelService.myPanels().subscribe(p=>{
       this.panels = p;
     })
-    this.panelService.myPanels().subscribe(p => {
-      this.panels = p;
+    this.panelService.globals().subscribe(p => {
+      p.forEach(element => {
+        this.panels.push(element)
+      });
     })
-    this.projectFormGroup = this.fb.group({
-      projectName: ['', Validators.required],
-      tilt: ['', Validators.required],
-      azimuth: ['180'],
-      install_date: ['', Validators.required]
-
-    });
     this.panelFormGroup = this.fb.group({
       panelWidth: ['', Validators.required],
       panelHeight: ['', Validators.required],
@@ -68,13 +66,14 @@ export class AddProjectComponent implements OnInit {
 
     });
     this.configurationForlGroup = this.fb.group({
+      name:['',Validators.required],
       azimuth:['',Validators.required],
       tilt:['',Validators.required],
+      rawSpacing:['',Validators.required],
       nb_panels:['',Validators.required]
 
     })
-    
-  
+
   }
 
   
@@ -112,6 +111,7 @@ export class AddProjectComponent implements OnInit {
   choosePanel(panel)
   {
     this.panel = panel;
+    console.log(panel);
     this.stepTwo = true;
     return true;
   }
@@ -126,18 +126,29 @@ export class AddProjectComponent implements OnInit {
     return true;
   }
 
-  getConfig()
-  {
-    this.service.getConfig().subscribe(c => {
-      this.tilt = c.tilt;
-      this.azimuth = c.direction;
-      this.nb_panels = c.panel_number
-    })
+  configChange(values:any){
+    console.log('h')
+    this.autoconfig = !this.autoconfig;
+    if(this.autoconfig){
+      let p={points:this.area,panelId:this.panel._id}
+      this.service.getConfig(p).subscribe(c => {
+        this.tilt = c.tilt;
+        this.azimuth = c.direction;
+        this.nb_panels = c.panel_number;
+        this.rawSpacing = c.rawSpacing;
+      })
+    }
+    else{
+        this.tilt = 0;
+        this.azimuth = "south";
+        this.nb_panels = 0
+        this.rawSpacing = 0;
+    }
   }
   newPanel(){
     const dialogRef = this.dialog.open(CreatePanelDialog, {
       width: '250px',
-      data: {name: this.name, height: this.height,width:this.width,capacity:this.capacity,technology:this.technology}
+      data: {name: 'test', height: this.height,width:this.width,capacity:this.capacity,technology:this.technology}
     });
 
     dialogRef.afterClosed().subscribe(result => {
@@ -178,10 +189,8 @@ export class AddProjectComponent implements OnInit {
 
   onSubmit()
   {
-    console.log(this.area);
-    let body=this.projectFormGroup.value;
-    let body1=this.panelFormGroup.value;
-    let p={points:this.area, projectName:body.projectName,tilt: body.tilt,panelHeight:body1.panelHeight,panelWidth:body1.panelWidth, panelCapacity:body1.panelCapacity }
+    let body=this.configurationForlGroup.value;
+    let p={points:this.area, projectName:body.name,tilt: this.tilt,panelId:this.panel._id, direction:this.azimuth, panelNumber:this.nb_panels,rawSpacing:this.rawSpacing}
     this.service.subscribeProject(p).subscribe((res)=>{
       this.router.navigate(['projects', res['_id']])
       console.log(res);

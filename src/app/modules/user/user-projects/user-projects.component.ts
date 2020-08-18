@@ -24,7 +24,7 @@ export class UserProjectsComponent implements OnInit {
     setTimeout(() => {
       /** spinner ends after 5 seconds */
       this.spinner.hide();
-    }, 5000);
+    }, 500);
 
     this.service.getAllProject().subscribe(
       p=>{this.projects=p;
@@ -39,7 +39,7 @@ export class UserProjectsComponent implements OnInit {
     this.service.deleteProject(project._id).subscribe((res)=>{
       this.projects.splice(index,1);
       this._snackBar.open(project.name+" has been deleted successfuly","close",{
-        duration: 5000,
+        duration: 2000,
       });
   },(err)=>{
     console.log(err);

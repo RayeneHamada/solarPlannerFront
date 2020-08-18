@@ -1,3 +1,4 @@
+import { PanelService } from './services/panel/panel.service';
 import { ForgotPasswordComponent } from './modules/visitor/forgot-password/forgot-password.component';
 import { LandingPageComponent } from './modules/visitor/landing-page/landing-page.component';
 import { AddProjectComponent } from './modules/user/add-project/add-project.component';
@@ -19,6 +20,7 @@ import { NotFoundComponent } from './modules/errors/not-found/not-found.componen
 import { ResetPasswordComponent } from './modules/visitor/reset-password/reset-password.component';
 import { LoginComponent } from './modules/visitor/login/login.component';
 import { PanelsComponent } from './modules/admin/panels/panels.component';
+import { PanelListComponent } from './modules/user/panels/panel-list/panel-list.component';
 
 
 
@@ -45,6 +47,17 @@ const routes: Routes = [
     },
 
   ]
+  },
+  {
+    path:'panels',
+    component: DefaultComponent,
+    canActivate: [AuthGuardGuard],
+    children: [
+      {
+        path: 'all',
+        component:PanelListComponent
+      }
+    ]
   },
   {
     path: '',
@@ -102,7 +115,7 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(routes, {useHash: true})],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }

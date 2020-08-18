@@ -8,6 +8,7 @@
 
       <div fxFlex fxLayout="row" fxLayoutAlign="flex-end">
           <ul fxLayout="row" fxLayoutGap="20px">
+              <li><a [routerLink]="['/projects/add']" routerLinkActive="router-link-active" ><button *ngIf="isUser" mat-raised-button color="accent">New Project</button></a></li>
               <li>
                 <button mat-button [matMenuTriggerFor]="menu">
                   <mat-icon>person_outline</mat-icon>

@@ -7,7 +7,6 @@
         <th scope="col">Technology</th>
         <th scope="col">Visibility</th>
         <th scope="col">Owner</th>
-        <th scope="col">Action</th>
     </thead>
     <tbody>
       <tr  *ngFor="let p of panels" >
@@ -17,10 +16,6 @@
         <td>{{p.technology}}</td>
         <td>{{p.type}}</td>
         <td>{{p.owner.fullName}}</td>
-
-        <td><button mat-button (click)='openDialog(p)'>Delete <i class="material-icons">
-          delete
-          </i></button></td>
       </tr>
     </tbody>
   </table>

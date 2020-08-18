@@ -1,11 +1,14 @@
 import { Injectable } from '@angular/core';
 import { HttpClient,HttpHeaders } from '@angular/common/http';
+import { environment } from '../../../environments/environment';
 
 
 @Injectable({
   providedIn: 'root'
 })
 export class PanelService {
+  private apiUrl: string = environment.apiUrl;
+
 
   constructor(private http: HttpClient) { }
 
@@ -18,7 +21,7 @@ export class PanelService {
       })
 
     };
-    return this.http.post('http://127.0.0.1:1235/panel/new',panel,httpOptions);  
+    return this.http.post(this.apiUrl+'panel/new',panel,httpOptions);  
 
   }
 
@@ -31,7 +34,7 @@ export class PanelService {
       })
 
     };
-       return this.http.get<any>('http://127.0.0.1:1235/panel/',httpOptions);
+       return this.http.get<any>(this.apiUrl+'/panel/',httpOptions);
   }
 
   deletePanel(id)
@@ -43,7 +46,7 @@ export class PanelService {
       })
 
     };
-       return  this.http.delete<any>(`http://127.0.0.1:1235/panel/delete/${id}`,httpOptions);
+       return  this.http.delete<any>(this.apiUrl+`/panel/delete/${id}`,httpOptions);
       
   }
 
@@ -56,7 +59,7 @@ export class PanelService {
       })
 
     };
-       return  this.http.get<any>(`http://127.0.0.1:1235/panel/globals`,httpOptions);
+       return  this.http.get<any>(this.apiUrl+`/panel/globals`,httpOptions);
   }
 
   myPanels()
@@ -68,6 +71,6 @@ export class PanelService {
       })
 
     };
-       return  this.http.get<any>(`http://127.0.0.1:1235/panel/myPanels`,httpOptions);
+       return  this.http.get<any>(this.apiUrl+`/panel/myPanels`,httpOptions);
   }
 }

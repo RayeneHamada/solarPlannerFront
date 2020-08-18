@@ -22,7 +22,7 @@
           <mat-card-content>
             <p>
               <strong>Technology :</strong>{{panel.technology}}<br>
-              <strong>Capacity :</strong>{{panel.capacity}} Kw<br>
+              <strong>Capacity :</strong>{{panel.capacity}} W<br>
               <strong>Height :</strong>{{panel.height}} cm<br>
               <strong>Width :</strong>{{panel.width}} cm<br>
 
@@ -41,24 +41,43 @@
   </mat-step>
   
   <mat-step>
+    <mat-slide-toggle (change)="configChange($event)" id="toggle" >Auto-Configuration</mat-slide-toggle><br>
     <form [formGroup]="configurationForlGroup">
       <ng-template matStepLabel>System configuration</ng-template>
+
+          <mat-form-field>
+            <mat-label>Name</mat-label>
+            <input matInput formControlName="name" [value]="name" placeholder="north" required>
+          </mat-form-field>
+          <br>
+          <mat-form-field>
+            <mat-label>Azimuth</mat-label>
+            <input matInput formControlName="azimuth" [value]="azimuth" placeholder="north" required>
+          </mat-form-field>
+          <br>
+
+          <mat-form-field>
+          <mat-label>Pnal tilt</mat-label>
+            <input matInput formControlName="tilt" [value]="tilt" required>
+          </mat-form-field>
+          <br>
+
       <mat-form-field>
-        <mat-label>Azimuth</mat-label>
-        <input matInput formControlName="azimuth" [value]="azimuth" placeholder="north" required>
+        <mat-label>Raw spacing</mat-label>
+        <input matInput formControlName="rawSpacing" [value]="rawSpacing" placeholder="north" required>
       </mat-form-field>
-      <mat-form-field>
-      <mat-label>Pnal tilt</mat-label>
-        <input matInput formControlName="tilt" [value]="tilt" required>
-      </mat-form-field>
+      <br>
+
       <mat-form-field>
       <mat-label>Number of panels</mat-label>
-        <input matInput formControlName="nbPanels" [value]='nb_panels' required>
+        <input matInput formControlName="nb_panels" [value]='nb_panels' required>
       </mat-form-field>
-      <div>
-        <button mat-button matStepperPrevious>Back</button>
-        <button mat-button matStepperNext>Next</button>
-      </div>
+      <br>
+
+  <div style="float: right;">
+  <button mat-button matStepperPrevious>Back</button>
+  <button mat-button matStepperNext (click)='onSubmit()'>Create</button>
+  </div>
     </form>
   </mat-step>
 

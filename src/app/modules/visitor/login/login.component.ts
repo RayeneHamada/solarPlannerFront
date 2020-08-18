@@ -14,7 +14,6 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 })
 export class LoginComponent implements OnInit {
 
-  imageNormal = '../../../../assets//images//btn_google_signin_light_normal_web@2x.png';
   loginFormGroup : FormGroup;
   constructor(private fb: FormBuilder, private service: auth, private route: Router,private socialAuthService: AuthService,private _snackBar: MatSnackBar) { }
 
@@ -31,7 +30,6 @@ export class LoginComponent implements OnInit {
     let body=this.loginFormGroup.value;
     let user = {"email": body.email, "password": body.password};
     this.service.login(user).subscribe((res)=>{
-      console.log('ahla1');
       localStorage.setItem('token', res['token']);
       if(this.service.isLoggedUser())
       {

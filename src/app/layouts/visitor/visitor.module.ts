@@ -12,7 +12,7 @@ import { ForgotPasswordComponent } from 'src/app/modules/visitor/forgot-password
 import { ResetPasswordComponent } from 'src/app/modules/visitor/reset-password/reset-password.component';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
 import { LoginComponent } from 'src/app/modules/visitor/login/login.component';
-
+import {MatInputModule} from '@angular/material/input';
 
 
 
@@ -36,7 +36,7 @@ import { LoginComponent } from 'src/app/modules/visitor/login/login.component';
       apiKey: 'AIzaSyCo6GxWjpimRcUeLYvQoLUDujtq_y4X4Ds' ,
       libraries: ['drawing']
     }),
-    MatSnackBarModule
+    MatSnackBarModule,MatInputModule
   ]
 })
 export class VisitorModule { }

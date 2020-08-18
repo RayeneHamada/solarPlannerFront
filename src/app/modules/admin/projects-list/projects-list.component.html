@@ -1,5 +1,5 @@
-
-<table *ngIf="projects[0]" class="table" class="mat-elevation-z8">
+<div *ngIf="projects[0] ; else loggedOut">
+<table  class="table" class="mat-elevation-z8">
     <thead>
         <th scope="col">Name</th>
         <th scope="col">Location</th>
@@ -25,4 +25,11 @@
       </tr>
     </tbody>
   </table>
-  <h1 *ngIf="!projects[0]"> THERE ARE NO PROJECTS FOR NOW</h1>
+</div>
+  <ng-template #loggedOut >
+    <div class="noprojects" *ngIf="projects">
+      <h1>You have no projects for now</h1>
+      <button mat-button [routerLink]="['/projects/add']" routerLinkActive="router-link-active" >Create your first project</button>
+    </div>
+  </ng-template>
+  

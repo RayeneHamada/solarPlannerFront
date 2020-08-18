@@ -4,7 +4,10 @@
 
 export const environment = {
   production: false,
-  marker_icon: "https://image.flaticon.com/icons/png/128/2427/2427035.png"
+  marker_icon: "https://image.flaticon.com/icons/png/128/2427/2427035.png",
+  apiUrl: 'http://127.0.0.1:1235',
+  
+
 };
 
 /*

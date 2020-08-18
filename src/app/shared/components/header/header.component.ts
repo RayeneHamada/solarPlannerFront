@@ -18,9 +18,10 @@ export class HeaderComponent implements OnInit {
   username;
   old_password;
   new_password;
+  isUser;
   ngOnInit(): void {
+    this.isUser = this.service.isLoggedUser();
     this.service.userProfile().subscribe(p=>{
-      console.log(p);
       this.username = p.user.fullName;
     });
   }

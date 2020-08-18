@@ -19,8 +19,6 @@ export class PanelsComponent implements OnInit {
   width;
   capacity;
   technology
-  old_password;
-  new_password;
 
   constructor(private service: PanelService,public dialog: MatDialog,private _snackBar: MatSnackBar) { }
 

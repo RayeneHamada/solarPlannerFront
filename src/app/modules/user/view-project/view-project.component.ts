@@ -44,6 +44,7 @@ export class ViewProjectComponent implements OnInit {
   solarnoon = '00:00';
   total_pv = 0;
   total_value = 0;
+  panel=null;
   title1="production in the next 6 days"
   title2="production in the past 6 days"
   constructor(private route: ActivatedRoute, private service:ProjectService,private spinner: NgxSpinnerService,private fileService:FileService) { }
@@ -76,6 +77,7 @@ export class ViewProjectComponent implements OnInit {
           this.total_pv = Number(this.project.total_prod.toFixed());
           this.total_value = this.total_pv*this.project.price
           this.center = {lat: this.project.lat,lng: this.project.lon};
+          this.panel = p.project.panel;
           this.project.area.forEach(point => {
           this.area.push({lat:point.lat,lng:point.lon});           
           });
@@ -138,17 +140,20 @@ export class ViewProjectComponent implements OnInit {
    
 
     this.fileService.downloadFile(this.id).subscribe(response => {
-			//let blob:any = new Blob([response.blob()], { type: 'text/json; charset=utf-8' });
-			//const url= window.URL.createObjectURL(blob);
-			//window.open(url);
       this.pdfSrc = response.url;
-			//fileSaver.saveAs(blob, 'employees.json');
 		}), error => console.log('Error downloading the file'),
                  () => console.info('File downloaded successfully');
     
    
   }
 
+  downloadPlan(){
+    this.fileService.downloadFile(this.id).subscribe(response => {
+			let blob:any = new Blob([response.blob()], { type: 'application/pdf; charset=utf-8' });
+			fileSaver.saveAs(blob, 'plan.pdf');
+		}), error => console.log('Error downloading the file'),
+                 () => console.info('File downloaded successfully');
+  }
 
 
 }

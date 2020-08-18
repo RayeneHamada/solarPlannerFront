@@ -1,6 +1,6 @@
-<section class="ss_index_one" style="background-color: white;"> <!--===== Section One Start =====-->
-	<div class="container-fluid">
-		<div class="ss_header"> <!--===== Top Menu =====-->
+<section class="section1" style="background-color: white;"> 
+	<div class="container">
+		<div class="ss_header"> 
 			<div class="row">
 				<div class="col-lg-3 col-md-7 col-sm-12 col-12 align-self-center">
 					<div class="ss_logo">
@@ -11,45 +11,40 @@
 					<div class="ss_menu">
 
 						<div class="head_icon">
-							
-
 							<div class="ss_menu_bar">
 								<span></span>
 								<span></span>
 								<span></span>
 							</div>
-							<a *ngIf="!isAuth" routerLink="/login" class="white_btn">Login</a>
-							<a *ngIf="isAuth && isUser" routerLink="/projects" class="white_btn">Dashboard</a>
-							<a *ngIf="isAuth && isUser" routerLink="/projects" class="white_btn">Dashboard</a>
-							<a *ngIf="isAuth && isAdmin" routerLink="/admin" class="white_btn">Dashboard</a>
-
+							<a *ngIf="!isAuth" routerLink="/login" class="white_btn" style="float: right;">Login</a>
+							<a *ngIf="isAuth && isUser" routerLink="/projects" class="white_btn" style="float: right;">Dashboard</a>
+							<a *ngIf="isAuth && isAdmin" routerLink="/admin" class="white_btn" style="float: right;">Dashboard</a>
 						</div>
 					</div>
 				</div>
 			</div>
 		</div>
-		<div class="ss_banner_main"> <!--===== Banner =====-->
+		<div class="ss_banner_main"> 
 			<div class="row">
 				<div class="col-lg-5">
 					<div class="ss_banner_left">
 						<h2>Solar services</h2>
 						<h1>Professional Solar<span> Panel Planner</span></h1>
-						<a href="#" class="white_btn">Get Started</a>
 					</div>
 				</div>
 				<div class="col-lg-7">
 					<div class="ss_banner_right">
 						<img class="img-fluid ss_cloud_one" src="assets/images/banner1_img.png" alt="image"/>
-						<img class="img-fluid ss_cloud" src="assets/images/cloud.png" alt="image"/>
 					</div>
 				</div>
 			</div>
 		</div>
 	</div>
-</section> <!--===== Section One End =====-->
+</section> 
 
-<section class="ss_section_three spacer_bottom" style="background-color: #fcfcfc;"> <!--===== Section Three Start =====-->
-	<div class="container-fluid"> 
+
+<section class="section2 spacer_bottom" style="background-color: #fcfcfc;"> 
+	<div class="container"> 
 		<div class="row">
 			<div class="col-lg-6">
 				<div class="ss_three_left wow fadeIn">
@@ -80,21 +75,9 @@
 						
 						
 					</div>
-					<a *ngIf="isAuth" routerLink="/registration" class="ss_btn">Know More</a>
+					<a *ngIf="!isAuth" routerLink="/registration" class="ss_btn">Know More</a>
 				</div>
 			</div>
 		</div>
-		<div class="ss_shape_one">
-			<div class="ss_shape"></div>
-		</div>
-		<div class="ss_shape_dot"></div>
 	</div>
-</section> <!--===== Section Three End =====-->
-
-
-
-
- <!--===== Section Footer End =====-->
-<div class="ss_copywrite">
-	<p>© All rights reserved 2020</p>
-</div>
+</section>

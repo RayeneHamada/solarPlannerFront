@@ -198,8 +198,100 @@
    
 
    </mat-tab>
-  <mat-tab label="PLan"> <pdf-viewer 
+
+
+
+   <mat-tab label="Panel">
+    <div fxLayout="raw" fxLayout.xs="column" fxLayoutAlign="space-between center" fxLayoutGap="20px" class="stats-cards">
+      <div fxFlex="25" fxLayout="raw wrap" >
+        <div class="col-xl-3 col-md-6 mb-4" fxFlex="100" cdkDrag cdkDragLockAxis="y">
+          <div class="card border-left-primary shadow h-100 py-2">
+            <div class="card-body">
+              <div class="row no-gutters align-items-center">
+                <div class="col mr-2">
+                  <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Name</div>
+                  <div class="h5 mb-0 font-weight-bold text-gray-800">{{panel.name}}</div>
+                </div>
+                <div class="col-auto">
+                  <i class="fas fa-chart-area fa-2x text-gray-300"></i>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="col-xl-3 col-md-6 mb-4" fxFlex="100" cdkDrag cdkDragLockAxis="y">
+          <div class="card border-left-primary shadow h-100 py-2">
+            <div class="card-body">
+              <div class="row no-gutters align-items-center">
+                <div class="col mr-2">
+                  <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Dimensions</div>
+                  <div class="h5 mb-0 font-weight-bold text-gray-800">{{panel.height}}/{{panel.width}} cm</div>
+                </div>
+                <div class="col-auto">
+                  <i class="fas fa-sun fa-2x text-gray-300"></i>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+       
+        
+      </div>
+      -<img  fxFlex="50" fxFlex.md='50' *ngIf="panel.technology == 'Monocrystalline'" src="../../../../assets//images//monocrystalline-solar-panel-500x500.jpg"/>
+      -<img  fxFlex="50" fxFlex.md='50' *ngIf="panel.technology == 'Polycrystalline'" src="../../../../assets//images/polycrystalline-solar-panel-500x500.jpg"/>
+      -<img  fxFlex="50" fxFlex.md='50' *ngIf="panel.technology == 'Thin film'" src="../../../../assets//images/48-Sharp-Thin-Film-Amorphous-Solar-Panel.jpg"/>
+
+    <div fxFlex="25" fxLayout="raw wrap" >
+  
+      
+      <div class="col-xl-3 col-md-6 mb-4" fxFlex="100" cdkDrag cdkDragLockAxis="y"> 
+        <div class="card border-left-primary shadow h-100 py-2">
+          <div class="card-body">
+            <div class="row no-gutters align-items-center">
+              <div class="col mr-2">
+                <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Capacity</div>
+                <div class="h5 mb-0 font-weight-bold text-gray-800">{{panel.capacity}} W</div>
+              </div>
+              <div class="col-auto">
+                <i class="fas fa-euro-sign   fa-2x text-gray-300"></i>
+                
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-xl-3 col-md-6 mb-4" fxFlex="100" cdkDrag cdkDragLockAxis="y"> 
+        <div class="card border-left-primary shadow h-100 py-2">
+          <div class="card-body">
+            <div class="row no-gutters align-items-center">
+              <div class="col mr-2">
+                <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Technology</div>
+                <div class="h5 mb-0 font-weight-bold text-gray-800">{{panel.technology}}</div>
+              </div>
+              <div class="col-auto">
+                <i class="fas fa-bolt fa-2x text-gray-300"></i>
+                
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+        
+    </div>
+    
+    </div>
+
+   </mat-tab>
+
+  <mat-tab label="Plan"> 
+    <button mat-flat-button color="primary" (click)="downloadPlan()"><span class="material-icons">
+      get_app
+      </span> Download</button>
+    <pdf-viewer 
     [src]="pdfSrc" 
     [render-text]="true"
-    style=" height: 50%; width: 50%;"  [show-borders]="true"></pdf-viewer> </mat-tab>
+    style=" height: 50%; width: 50%;"  [show-borders]="true"></pdf-viewer> 
+  </mat-tab>
+
 </mat-tab-group>

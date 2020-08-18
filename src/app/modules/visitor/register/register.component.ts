@@ -16,7 +16,6 @@ import {
 })
 export class RegisterComponent implements OnInit {
 
-  imageNormal = '../../../../assets//images//btn_google_signin_light_normal_web@2x.png';
   registrationFormGroup : FormGroup;
   constructor(private fb: FormBuilder, private service: auth, private route: Router,private _snackBar: MatSnackBar,private socialAuthService: AuthService) { }
 
@@ -56,7 +55,6 @@ export class RegisterComponent implements OnInit {
       (userData) => {
         console.log(socialPlatform+" sign in data : " , userData);
         this.service.socialAuth(userData.token).subscribe(res => {
-          console.log(res);
           localStorage.setItem('token',res['token']);
           if(this.service.isLoggedUser())
           {

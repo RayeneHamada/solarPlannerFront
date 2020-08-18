@@ -21,7 +21,6 @@ import {AdminGuard} from './guards/admin/admin.guard';
 import {
   SocialLoginModule,
   AuthServiceConfig,
-  FacebookLoginProvider,
   GoogleLoginProvider
 } from "angular-6-social-login";
 
@@ -31,12 +30,6 @@ export function getAuthServiceConfigs() {
   let config = new AuthServiceConfig(
       [
 
-
-
-        {
-          id: FacebookLoginProvider.PROVIDER_ID,
-          provider: new FacebookLoginProvider("533476774206014")
-        },
         {
           id: GoogleLoginProvider.PROVIDER_ID,
           provider: new GoogleLoginProvider("225229836646-8tor2vbkoqpv12l7r5dnpvbqi67prgbo.apps.googleusercontent.com")

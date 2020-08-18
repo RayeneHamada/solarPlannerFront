@@ -1,0 +1,19 @@
+<table class="table" class="mat-elevation-z8">
+    <thead>
+          <th scope="col">Name</th>
+          <th scope="col">Height/Width (cm)</th>
+          <th scope="col">Capacity (W)</th>
+          <th scope="col">Technology</th>
+      </thead>
+      <tbody>
+        <tr  *ngFor="let p of panels" >
+          <th scope="row">{{p.name}}</th>
+          <td>{{p.height}}/{{p.width}}</td>
+          <td>{{p.capacity}}</td>
+          <td>{{p.technology}}</td>
+        </tr>
+      </tbody>
+</table>
+<button mat-fab color="accent" class="fab" (click)="newPanel()">
+    <mat-icon>add</mat-icon>
+</button>
