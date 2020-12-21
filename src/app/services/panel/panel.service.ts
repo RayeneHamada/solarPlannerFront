@@ -14,6 +14,7 @@ export class PanelService {
 
   subscribePanel(panel: any)
   {
+    console.log('temshy');
     const httpOptions = {
       headers: new HttpHeaders({
         'Content-Type': 'application/json',
@@ -21,7 +22,7 @@ export class PanelService {
       })
 
     };
-    return this.http.post(this.apiUrl+'panel/new',panel,httpOptions);  
+    return this.http.post(this.apiUrl+'/panel/new',panel,httpOptions);  
 
   }
 
